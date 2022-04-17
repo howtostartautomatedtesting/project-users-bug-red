@@ -1,16 +1,9 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.SplittableRandom;
 
 public class CompaniesPageAndAddCompanyPage extends AbstractPage {
     private WebDriver driver;
@@ -20,27 +13,27 @@ public class CompaniesPageAndAddCompanyPage extends AbstractPage {
     @FindBy(xpath = "/html/body/div[3]/div[1]/p[1]/a")
     private WebElement buttonAddCompany;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[1]/td[2]/input")
-    private WebElement inputNameCompany;
+    private WebElement inputName;
     @FindBy(xpath = "//*[@id='select2-type-4o-container']")
-    private WebElement typeCompany;
+    private WebElement selectCompany;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[3]/td[2]/input")
-    private WebElement inputInnCompany;
+    private WebElement inputInn;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[4]/td[2]/input")
-    private WebElement inputOgrnCompany;
+    private WebElement inputOgrn;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[5]/td[2]/input")
-    private WebElement inputKppCompany;
+    private WebElement inputKpp;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[6]/td[2]/input")
-    private WebElement inputPhoneNumberCompany;
+    private WebElement inputPhoneNumber;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[7]/td[2]/input")
-    private WebElement inputAddressCompany;
+    private WebElement inputAddress;
     @FindBy(xpath = "/html/body/div[3]/div[1]/form/table/tbody/tr[8]/td[2]/span/span[1]/span/ul")
-    private WebElement typeEmployeesCompany;
+    private WebElement selectEmployees;
     @FindBy(xpath = " /html/body/div[3]/div[1]/form/table/tbody/tr[9]/td[2]/input")
     private WebElement pressButtonAddCompany;
 
     public CompaniesPageAndAddCompanyPage(WebDriver driver) {
-        this.driver = driver;                                         // Если можно словами простыми пояснить описания конструктора
-        PageFactory.initElements(driver, this);                 // на следующем занятии
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public CompaniesPageAndAddCompanyPage openPageCompanies() {
@@ -54,50 +47,42 @@ public class CompaniesPageAndAddCompanyPage extends AbstractPage {
     }
 
     public CompaniesPageAndAddCompanyPage typeNameCompany(String name) {
-        inputNameCompany.sendKeys(name);
+        inputName.sendKeys(name);
         return this;
     }
 
-    // Есть сомнения по этому методу
     public CompaniesPageAndAddCompanyPage chooseTypeCompany() {
-        typeCompany.click();
-        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(typeCompany))
-                .sendKeys();
-        typeCompany.sendKeys(Keys.ENTER);
+        selectCompany.click();
         return this;
     }
 
     public CompaniesPageAndAddCompanyPage typeInnCompany(String inn){
-        inputInnCompany.sendKeys(inn);
+        inputInn.sendKeys(inn);
         return this;
     }
 
     public CompaniesPageAndAddCompanyPage typeOgrnCompany(String ogrn){
-        inputOgrnCompany.sendKeys(ogrn);
+        inputOgrn.sendKeys(ogrn);
         return this;
     }
 
     public CompaniesPageAndAddCompanyPage typeKppCompany(String kpp){
-        inputKppCompany.sendKeys(kpp);
+        inputKpp.sendKeys(kpp);
         return this;
     }
 
     public CompaniesPageAndAddCompanyPage typePhoneNumberCompany(String number){
-        inputKppCompany.sendKeys(number);
+        inputPhoneNumber.sendKeys(number);
         return this;
     }
 
     public CompaniesPageAndAddCompanyPage typeAddressCompany(String address){
-        inputKppCompany.sendKeys(address);
+        inputAddress.sendKeys(address);
         return this;
     }
 
-    // Есть сомнения по этому методу
     public CompaniesPageAndAddCompanyPage chooseEmployeesCompany(){
-        typeEmployeesCompany.click();
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(typeEmployeesCompany))
-                .sendKeys();
-        typeEmployeesCompany.sendKeys(Keys.ENTER);
+        selectEmployees.click();
         return this;
     }
 
