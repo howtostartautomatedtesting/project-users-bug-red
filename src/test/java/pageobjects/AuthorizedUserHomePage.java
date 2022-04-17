@@ -9,28 +9,28 @@ public class AuthorizedUserHomePage extends AbstractPage{
 
     private WebDriver driver;
 
-    @FindBy(xpath = "//div[@id='main-menu']//li[1]/a")
+    @FindBy(xpath = "//div[@id='main-menu']//*[text()='Пользователи']/parent::a")
     private WebElement buttonUsers;
 
-    @FindBy(xpath = "//div[@id='main-menu']//li[2]/a")
+    @FindBy(xpath = "//div[@id='main-menu']//a[@href='/tasks/index.html']")
     private WebElement buttonTasks;
 
-    @FindBy(xpath = "//div[@id='main-menu']//li[3]/a")
+    @FindBy(xpath = "//div[@id='main-menu']//a[@href='/companys/index.html']")
     private WebElement buttonCompanies;
 
-    @FindBy(xpath = "//div[@class='hidden-xs']//li[1]/a")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/notify/index.html']")
     private WebElement buttonNotifications;
 
-    @FindBy(xpath = "//div[@class='hidden-xs']//li[2]/a")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/my/index.html']")
     private WebElement buttonUserTasks;
 
-    @FindBy(xpath = "//div[@class='hidden-xs']//li[3]/a")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//li[@id='fat-menu']/a")
     private WebElement dropdownMenuUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']/li[1]/a")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Личный кабинет']")
     private WebElement buttonUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']/li[3]/a")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Выход']")
     private WebElement buttonLogOutAccount;
 
     public AuthorizedUserHomePage(WebDriver driver) {
