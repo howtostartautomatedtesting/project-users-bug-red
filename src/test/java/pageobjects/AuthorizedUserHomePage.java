@@ -44,29 +44,29 @@ public class AuthorizedUserHomePage extends AbstractPage{
     }
 
     //необходимо добавить PageObject UsersPage
-    /*public UsersPage openUsersPage(){
+    /*public UsersPage clickButtonUsers(){
         buttonUsers.click();
         return new UsersPage(driver);
     }*/
 
-    public TasksPage openTasksPage(){
+    public TasksPage clickButtonTasks(){
         buttonTasks.click();
         return new TasksPage(driver);
     }
 
-    public CompaniesPage openCompaniesPage(){
+    public CompaniesPage clickButtonCompanies(){
         buttonCompanies.click();
         return new CompaniesPage(driver);
     }
 
     //необходимо добавить PageObject NotificationsPage
-    /*public NotificationsPage openUsersPage(){
+    /*public NotificationsPage clickButtonNotifications(){
         buttonNotifications.click();
         return new NotificationsPage(driver);
     }*/
 
     //необходимо добавить PageObject UserTasksPage
-    /*public UserTasksPage openUserTasksPage(){
+    /*public UserTasksPage clickButtonUserTasks(){
         buttonUserTasks.click();
         return new UserTasksPage(driver);
     }*/
@@ -81,10 +81,9 @@ public class AuthorizedUserHomePage extends AbstractPage{
         return new UserProfilePage(driver);
     }
 
-    public HomePage logOutUserProfilePage(){
+    public HomePage logOutAuthorizedUserPage(){
         dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
         return new HomePage(driver);
     }
-
 }
