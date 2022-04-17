@@ -15,7 +15,7 @@ public class AddTaskPage extends AbstractPage {
     }
 
     @FindBy(xpath = "//div[1]/h2")
-    private WebElement HeadingAddTask;
+    private WebElement headingAddTask;
     @FindBy(xpath = "//tr[1]/td[1]")
     private WebElement labelName;
     @FindBy(xpath = "//tr[2]/td[1]")
@@ -35,11 +35,10 @@ public class AddTaskPage extends AbstractPage {
 
 
     public String getHeadingAddTaskNameText() {
-        return HeadingAddTask.getText();
+        return headingAddTask.getText();
     }
 
     public String getLabelNameText() {
-
         return labelName.getText();
     }
 
@@ -48,43 +47,42 @@ public class AddTaskPage extends AbstractPage {
     }
 
     public String getLabelResponsibleNameText() {
-
         return labelResponsible.getText();
     }
 
-    public AddTaskPage InputNameTask(String name) {
+    public AddTaskPage inputName(String name) {
         inputName.sendKeys(name);
         return this;
     }
 
-    public AddTaskPage InputDescriptionTask(String description) {
+    public AddTaskPage inputDescription(String description) {
         inputDescription.sendKeys(description);
         return this;
     }
 
-    public AddTaskPage InputResponsible(String responsible) {
+    public AddTaskPage inputResponsible(String responsible) {
         dropBoxResponsible.click();
         inputResponsible.sendKeys(responsible);
         inputResponsible.sendKeys(Keys.ENTER);
         return this;
     }
 
-   /* public TasksPage ClickButtonAddTask() {
+   /* public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
     } */
 
     public AddTaskPage fillFormTaskAdd(String name, String description, String responsible) {
-        InputNameTask(name);
-        InputDescriptionTask(description);
-        InputResponsible(responsible);
+        inputName(name);
+        inputDescription(description);
+        inputResponsible(responsible);
         return this;
     }
 
     /* public TasksPage createNewTask(String name, String description, String responsible) {
-        InputNameTask(name);
-        InputDescriptionTask(description);
-        InputResponsible(responsible);
+        inputName(name);
+        inputDescription(description);
+        inputResponsible(responsible);
         buttonAddTask.click();
         return new TasksPage(driver);
 }
