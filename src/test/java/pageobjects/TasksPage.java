@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class TasksPage extends AbstractPage{
 
     private WebDriver driver;
-    private final String TASKS_PAGE_URL = "http://users.bugred.ru/tasks/index.html";
+    private final String TASKS_PAGE_URL = BASE_URL + "/tasks/index.html";
 
     @FindBy(tagName = "h2")
     private WebElement pageTitle;
@@ -20,7 +20,7 @@ public class TasksPage extends AbstractPage{
     @FindBy(xpath = "//table/thead//td[2]")
     private WebElement columnTitleSchedule;
 
-    @FindBy(xpath = "//a[@class='btn btn-warning']")
+    @FindBy(xpath = "//a[@href='/tasks/add.html']")
     private WebElement buttonAddTask;
 
     public TasksPage(WebDriver driver) {
@@ -118,5 +118,4 @@ public class TasksPage extends AbstractPage{
         String xpathButtonDeleteTaskPart = "td[4]//a";
         return getTaskXPathByTaskName(taskName).concat(xpathButtonDeleteTaskPart);
     }
-
 }
