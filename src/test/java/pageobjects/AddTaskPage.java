@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class AddTaskPage extends AbstractPage {
     private WebDriver driver;
@@ -18,71 +14,79 @@ public class AddTaskPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "/html/body/div[3]/div[1]/h2")
-    private WebElement textHeadingAddTask;
-    @FindBy(xpath = "/html//tbody/tr[1]/td[1]")
-    private WebElement textFieldNameTask;
-    @FindBy(xpath = "/html//tbody/tr[1]/td[1]")
-    private WebElement textFieldDescriptionTask;
-    @FindBy(xpath = "/html//tbody/tr[3]/td[1]")
-    private WebElement textFieldResponsible;
-    @FindBy(xpath = "//input[@name=\"name\"]")
-    private WebElement fieldInputName;
-    @FindBy(xpath = "//textarea[@name=\"description\"]")
-    private WebElement fieldInputDescriptionTask;
-    @FindBy(xpath = "//span[@id=\"textbox\"]")
-    private WebElement dropBoxDown;
-    @FindBy(xpath = "/html/body/span/span/span[1]/input")
-    private WebElement fieldInputResponsible;
+    @FindBy(xpath = "//div[1]/h2")
+    private WebElement HeadingAddTask;
+    @FindBy(xpath = "//tr[1]/td[1]")
+    private WebElement labelName;
+    @FindBy(xpath = "//tr[2]/td[1]")
+    private WebElement labelDescription;
+    @FindBy(xpath = "//tr[3]/td[1]")
+    private WebElement labelResponsible;
+    @FindBy(xpath = "//input[@name='name']")
+    private WebElement inputName;
+    @FindBy(xpath = "//textarea[@name='description']")
+    private WebElement inputDescription;
+    @FindBy(xpath = "//span[@id='select2-user-13-container']")
+    private WebElement dropBoxResponsible;
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    private WebElement inputResponsible;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement buttonAddTask;
 
 
-    public boolean getNameHeadingAddTask(String value) {
-        return textHeadingAddTask.getText().equals(value);
+    public String getHeadingAddTaskNameText() {
+        return HeadingAddTask.getText();
     }
 
-    public boolean getNameFieldNameTask(String value) {
-        return textFieldNameTask.getText().equals(value);
+    public String getLabelNameText() {
+
+        return labelName.getText();
     }
 
-    public boolean getNameFieldDescriptionTask(String value) {
-        return textFieldDescriptionTask.getText().equals(value);
+    public String getLabelDescriptionNameText() {
+        return labelDescription.getText();
     }
 
-    public boolean getNameFieldResponsible(String value) {
-        return textFieldResponsible.getText().equals(value);
+    public String getLabelResponsibleNameText() {
+
+        return labelResponsible.getText();
     }
 
     public AddTaskPage InputNameTask(String name) {
-        fieldInputName.sendKeys(name);
+        inputName.sendKeys(name);
         return this;
     }
 
     public AddTaskPage InputDescriptionTask(String description) {
-        fieldInputDescriptionTask.sendKeys(description);
+        inputDescription.sendKeys(description);
         return this;
     }
 
     public AddTaskPage InputResponsible(String responsible) {
-        fieldInputResponsible.click();
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(fieldInputResponsible))
-                .sendKeys(responsible);
-        fieldInputResponsible.sendKeys(Keys.ENTER);
+        dropBoxResponsible.click();
+        inputResponsible.sendKeys(responsible);
+        inputResponsible.sendKeys(Keys.ENTER);
         return this;
     }
 
-    public AddTaskPage ClickButtonAddTask() {
+   /* public TasksPage ClickButtonAddTask() {
         buttonAddTask.click();
-        return this;     //new TasksPage(driver)
-    }
+        return new TasksPage(driver);
+    } */
 
-    public AddTaskPage fillForm(String name, String description, String responsible) {
+    public AddTaskPage fillFormTaskAdd(String name, String description, String responsible) {
         InputNameTask(name);
         InputDescriptionTask(description);
         InputResponsible(responsible);
         return this;
     }
 
-
+    /* public TasksPage createNewTask(String name, String description, String responsible) {
+        InputNameTask(name);
+        InputDescriptionTask(description);
+        InputResponsible(responsible);
+        buttonAddTask.click();
+        return new TasksPage(driver);
+}
+     */
 }
