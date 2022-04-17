@@ -26,7 +26,7 @@ public class AddTaskPage extends AbstractPage {
     private WebElement inputName;
     @FindBy(xpath = "//textarea[@name='description']")
     private WebElement inputDescription;
-    @FindBy(xpath = "//span[@id='select2-user-13-container']")
+    @FindBy(xpath = "//span[@role='textbox']")
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement inputResponsible;
