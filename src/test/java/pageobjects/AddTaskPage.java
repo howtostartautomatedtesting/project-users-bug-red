@@ -19,23 +19,23 @@ public class AddTaskPage extends AbstractPage {
     }
 
     @FindBy(xpath = "/html/body/div[3]/div[1]/h2")
-    WebElement textHeadingAddTask;
+    private WebElement textHeadingAddTask;
     @FindBy(xpath = "/html//tbody/tr[1]/td[1]")
-    WebElement textFieldNameTask;
+    private WebElement textFieldNameTask;
     @FindBy(xpath = "/html//tbody/tr[1]/td[1]")
-    WebElement textFieldDescriptionTask;
+    private WebElement textFieldDescriptionTask;
     @FindBy(xpath = "/html//tbody/tr[3]/td[1]")
-    WebElement textFieldResponsible;
+    private WebElement textFieldResponsible;
     @FindBy(xpath = "//input[@name=\"name\"]")
-    WebElement fieldInputName;
+    private WebElement fieldInputName;
     @FindBy(xpath = "//textarea[@name=\"description\"]")
-    WebElement fieldInputDescriptionTask;
+    private WebElement fieldInputDescriptionTask;
     @FindBy(xpath = "//span[@id=\"textbox\"]")
-    WebElement dropBoxDown;
+    private WebElement dropBoxDown;
     @FindBy(xpath = "/html/body/span/span/span[1]/input")
-    WebElement fieldInputResponsible;
+    private WebElement fieldInputResponsible;
     @FindBy(xpath = "//input[@type='submit']")
-    WebElement buttonAddTask;
+    private WebElement buttonAddTask;
 
 
     public boolean getNameHeadingAddTask(String value) {
