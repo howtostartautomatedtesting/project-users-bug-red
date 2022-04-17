@@ -88,7 +88,7 @@ public class TasksPage extends AbstractPage{
     }*/
 
     //необходимо добавить PageObject AddTaskToSchedulePage
-    /*public AddTaskToSchedulePage editTask(String taskName){
+    /*public AddTaskToSchedulePage addTaskToSchedule(String taskName){
         WebElement buttonAddToSchedule = driver.findElement(By.xpath(getButtonAddToScheduleXPath(taskName)));
         buttonAddToSchedule.click();
         return new AddTaskToSchedulePage(driver);
