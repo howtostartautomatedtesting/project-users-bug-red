@@ -12,8 +12,6 @@ public class AddCompanyPage extends AbstractPage {
     private WebDriver driver;
     private final String ADD_PAGE_COMPANY = BASE_URL + "/companys/add.html";
 
-    //    @FindBy(xpath = "//*[text()='Добавить компанию']")
-//    private WebElement buttonAddCompany;
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputName;
     @FindBy(xpath = "//h2[text()='Добавление компании']")
