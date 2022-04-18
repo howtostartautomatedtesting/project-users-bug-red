@@ -26,12 +26,12 @@ public class EditTaskPage extends AbstractPage {
     private WebElement inputName;
     @FindBy(xpath = "//textarea[@name='description']")
     private WebElement inputDescription;
-    @FindBy(xpath = "//select[@class='form-control']")
+    @FindBy(xpath = "//select[@name='user']")
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement buttonChangeTask;
 
-    public String getHeadingAddTaskNameText() {
+    public String getHeadingEditTaskText() {
         return headingEditTask.getText();
     }
 
@@ -39,30 +39,29 @@ public class EditTaskPage extends AbstractPage {
         return labelName.getText();
     }
 
-    public String getLabelDescriptionNameText() {
+    public String getLabelDescriptionText() {
         return labelDescription.getText();
     }
 
-    public String getLabelResponsibleNameText() {
+    public String getLabelResponsibleText() {
         return labelResponsible.getText();
     }
 
-    public EditTaskPage editName(String name) {
+    public EditTaskPage inputName(String name) {
         inputName.clear();
         inputName.sendKeys(name);
         return this;
     }
 
-    public EditTaskPage editDescription(String description) {
+    public EditTaskPage inputDescription(String description) {
         inputDescription.clear();
         inputDescription.sendKeys(description);
         return this;
     }
 
-    public EditTaskPage editResponsible(String responsible) {
+    public EditTaskPage inputResponsible(String responsible) {
         dropBoxResponsible.click();
-        dropBoxResponsible.sendKeys(responsible);
-        dropBoxResponsible.sendKeys(Keys.ENTER);
+        dropBoxResponsible.sendKeys(responsible,Keys.ENTER);
         return this;
     }
     /* public TasksPage clickChangeTask() {
@@ -70,17 +69,17 @@ public class EditTaskPage extends AbstractPage {
         return new TasksPage(driver);
     } */
 
-    public EditTaskPage changeAllFillingFormAddTask(String name, String description, String responsible) {
-        editName(name);
-        editDescription(description);
-        editResponsible(responsible);
+    public EditTaskPage fillFormEditTask(String name, String description, String responsible) {
+        inputName(name);
+        inputDescription(description);
+        inputResponsible(responsible);
         return this;
     }
 
-   /*  public TasksPage ChangeFormCreateEditTask(String name, String description, String responsible) {
-        editName(name);
-        editDescription(description);
-        editResponsible(responsible);
+    /* public TasksPage createEditTask(String name, String description, String responsible) {
+        inputName(name);
+        inputDescription(description);
+        inputResponsible(responsible);
         clickChangeTask();
         return new TasksPage(driver);
 }*/
