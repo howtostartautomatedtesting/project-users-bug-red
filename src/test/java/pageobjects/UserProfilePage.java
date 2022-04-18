@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USERS_PAGE_URL = BASE_URL + "/user/profile/index.html";
+    private final String USER_PROFILE_PAGE_URL = BASE_URL + "/user/profile/index.html";
 
     public UserProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -18,8 +18,8 @@ public class UserProfilePage extends AbstractPage {
     private WebElement headingProfile;
     @FindBy(xpath = "//tr[1]/td[1]")
     private WebElement labelPhoto;
-    @FindBy(xpath = "//input[@type='file']")
-    private WebElement loadPhoto;
+    @FindBy(xpath = "//input[@name='avatar']")
+    private WebElement buttonLoadPhoto;
     @FindBy(xpath = "//tr[2]/td[1]")
     private WebElement labelName;
     @FindBy(xpath = "//input[@name='name']")
@@ -36,11 +36,11 @@ public class UserProfilePage extends AbstractPage {
     private WebElement inputGenderNone;
     @FindBy(xpath = "//tr[4]/td[1]")
     private WebElement labelBirthday;
-    @FindBy(xpath = "//input[@type='date'][@name='birthday']")
+    @FindBy(xpath = "//input[@name='birthday']")
     private WebElement inputBirthday;
     @FindBy(xpath = "//tr[5]/td[1]")
     private WebElement labelDateStart;
-    @FindBy(xpath = "//input[@type='date'][@name='date_start']")
+    @FindBy(xpath = "//input[@name='date_start']")
     private WebElement inputDateStart;
     @FindBy(xpath = "//tr[6]/td[1]")
     private WebElement labelHobby;
@@ -54,11 +54,11 @@ public class UserProfilePage extends AbstractPage {
     private WebElement buttonSave;
 
     public UserProfilePage openUsersPage() {
-        driver.get(USERS_PAGE_URL);
+        driver.get(USER_PROFILE_PAGE_URL);
         return this;
     }
 
-    public String headingProfile() {
+    public String getHeadingProfile() {
         return headingProfile.getText();
     }
 
@@ -91,8 +91,8 @@ public class UserProfilePage extends AbstractPage {
     }
 
     public UserProfilePage changePhoto(String path) {
-        loadPhoto.click();
-        loadPhoto.sendKeys(path);
+        buttonLoadPhoto.click();
+        buttonLoadPhoto.sendKeys(path);
         return this;
     }
 
@@ -102,21 +102,21 @@ public class UserProfilePage extends AbstractPage {
         return this;
     }
 
-    public UserProfilePage choseGenderM() {
-        inputGender.click();
-        inputGenderM.click();
-        return this;
-    }
-
-    public UserProfilePage choseGenderF() {
-        inputGender.click();
-        inputGenderF.click();
-        return this;
-    }
-
-    public UserProfilePage choseGenderNone() {
-        inputGender.click();
-        inputGenderNone.click();
+    public UserProfilePage choseGender(String gender) {
+        switch (gender) {
+            case "F":
+                inputGender.click();
+                inputGenderF.click();
+                break;
+            case "M":
+                inputGender.click();
+                inputGenderM.click();
+                break;
+            case "None":
+                inputGender.click();
+                inputGenderNone.click();
+                break;
+        }
         return this;
     }
 
@@ -132,13 +132,13 @@ public class UserProfilePage extends AbstractPage {
         return this;
     }
 
-    public UserProfilePage fillHobby(String hobby) {
+    public UserProfilePage typeHobby(String hobby) {
         inputHobby.clear();
         inputHobby.sendKeys(hobby);
         return this;
     }
 
-    public UserProfilePage fillINN(String inn) {
+    public UserProfilePage typeINN(String inn) {
         inputINN.clear();
         inputINN.sendKeys(inn);
         return this;
@@ -149,25 +149,15 @@ public class UserProfilePage extends AbstractPage {
         return this;
     }
 
-    public UserProfilePage fillInProfilePageCompletely(String name, String path, String gender, String birthday,
+    public UserProfilePage fillProfileAndSave(String name, String path, String gender, String birthday,
                                                        String dateStart, String hobby, String inn) {
         typeName(name);
         changePhoto(path);
-        switch (gender) {
-            case "F":
-                choseGenderF();
-                break;
-            case "M":
-                choseGenderM();
-                break;
-            case "None":
-                choseGenderNone();
-                break;
-        }
+        choseGender(gender);
         typeBirthday(birthday);
         typeDateStart(dateStart);
-        fillHobby(hobby);
-        fillINN(inn);
+        typeHobby(hobby);
+        typeINN(inn);
         clickButtonSave();
         return new UserProfilePage(driver);
     }
