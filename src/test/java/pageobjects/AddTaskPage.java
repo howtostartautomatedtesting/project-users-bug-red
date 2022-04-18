@@ -34,7 +34,7 @@ public class AddTaskPage extends AbstractPage {
     private WebElement buttonAddTask;
 
 
-    public String getHeadingAddTaskNameText() {
+    public String getHeadingAddTaskText() {
         return headingAddTask.getText();
     }
 
@@ -42,11 +42,11 @@ public class AddTaskPage extends AbstractPage {
         return labelName.getText();
     }
 
-    public String getLabelDescriptionNameText() {
+    public String getLabelDescriptionText() {
         return labelDescription.getText();
     }
 
-    public String getLabelResponsibleNameText() {
+    public String getLabelResponsibleText() {
         return labelResponsible.getText();
     }
 
@@ -83,7 +83,7 @@ public class AddTaskPage extends AbstractPage {
         inputName(name);
         inputDescription(description);
         inputResponsible(responsible);
-        buttonAddTask.click();
+        clickButtonAddTask();
         return new TasksPage(driver);
 }
      */
