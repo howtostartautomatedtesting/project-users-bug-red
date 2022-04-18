@@ -47,21 +47,21 @@ public class EditTaskPage extends AbstractPage {
         return labelResponsible.getText();
     }
 
-    public EditTaskPage inputName(String name) {
+    public EditTaskPage fillName(String name) {
         inputName.clear();
         inputName.sendKeys(name);
         return this;
     }
 
-    public EditTaskPage inputDescription(String description) {
+    public EditTaskPage fillDescription(String description) {
         inputDescription.clear();
         inputDescription.sendKeys(description);
         return this;
     }
 
-    public EditTaskPage inputResponsible(String responsible) {
+    public EditTaskPage fillResponsible(String responsible) {
         dropBoxResponsible.click();
-        dropBoxResponsible.sendKeys(responsible,Keys.ENTER);
+        dropBoxResponsible.sendKeys(responsible, Keys.ENTER);
         return this;
     }
     /* public TasksPage clickChangeTask() {
@@ -70,19 +70,19 @@ public class EditTaskPage extends AbstractPage {
     } */
 
     public EditTaskPage fillFormEditTask(String name, String description, String responsible) {
-        inputName(name);
-        inputDescription(description);
-        inputResponsible(responsible);
+        fillName(name);
+        fillDescription(description);
+        fillResponsible(responsible);
         return this;
     }
 
-    /* public TasksPage createEditTask(String name, String description, String responsible) {
-        inputName(name);
-        inputDescription(description);
-        inputResponsible(responsible);
+   /* public TasksPage createEditTask(String name, String description, String responsible) {
+        fillName(name);
+        fillDescription(description);
+        fillResponsible(responsible);
         clickChangeTask();
         return new TasksPage(driver);
-}*/
+    }*/
 
 }
 
