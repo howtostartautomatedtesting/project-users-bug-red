@@ -50,20 +50,19 @@ public class AddTaskPage extends AbstractPage {
         return labelResponsible.getText();
     }
 
-    public AddTaskPage inputName(String name) {
+    public AddTaskPage fillName(String name) {
         inputName.sendKeys(name);
         return this;
     }
 
-    public AddTaskPage inputDescription(String description) {
+    public AddTaskPage fillDescription(String description) {
         inputDescription.sendKeys(description);
         return this;
     }
 
-    public AddTaskPage inputResponsible(String responsible) {
+    public AddTaskPage fillResponsible(String responsible) {
         dropBoxResponsible.click();
-        inputResponsible.sendKeys(responsible);
-        inputResponsible.sendKeys(Keys.ENTER);
+        inputResponsible.sendKeys(responsible, Keys.ENTER);
         return this;
     }
 
@@ -73,18 +72,18 @@ public class AddTaskPage extends AbstractPage {
     } */
 
     public AddTaskPage fillFormTaskAdd(String name, String description, String responsible) {
-        inputName(name);
-        inputDescription(description);
-        inputResponsible(responsible);
+        fillName(name);
+        fillDescription(description);
+        fillResponsible(responsible);
         return this;
     }
 
-    /* public TasksPage createNewTask(String name, String description, String responsible) {
-        inputName(name);
-        inputDescription(description);
-        inputResponsible(responsible);
+  /*  public TasksPage createNewTask(String name, String description, String responsible) {
+        fillName(name);
+        fillDescription(description);
+        fillResponsible(responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
-}
-     */
+}*/
+
 }
