@@ -96,7 +96,7 @@ public class UserLoginPage extends AbstractPage {
         return this;
     }
 
-    public UserLoginPage inputPasswordRegistrationForm(String password) {
+    public UserLoginPage inputPasswordRegistration(String password) {
         inputPasswordRegistration.sendKeys(password);
         return this;
     }
@@ -132,9 +132,17 @@ public class UserLoginPage extends AbstractPage {
     }
 
     public UserLoginPage fillFormLogin(String email, String password){
-        inputNameRegistration(email);
+        inputEmailLogin(email);
         inputPasswordLogin(password);
         clickButtonAuthorization.click();
+        return this;
+    }
+
+    public UserLoginPage fillFormRegistration(String name, String email, String password){
+        inputNameRegistration(name);
+        inputEmailRegistration(email);
+        inputPasswordRegistration(password);
+        clickButtonRegistration.click();
         return this;
     }
 }
