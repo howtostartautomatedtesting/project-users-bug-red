@@ -9,8 +9,8 @@ public class UserLoginPage extends AbstractPage {
     private WebDriver driver;
     private final String USER_LOGIN_URL = BASE_URL + "/user/login/index.html";
 
-    @FindBy(xpath = "//h2[text()='Вход']")
-    private WebElement pageTitleLogin;
+    @FindBy(xpath = "//div[@class='col-md-6'][1]/h2")
+    private WebElement formTitleLogin;
 
     @FindBy(xpath = "//input[@name='login']")
     private WebElement inputEmailLogin;
@@ -18,11 +18,11 @@ public class UserLoginPage extends AbstractPage {
     @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
     private WebElement inputPasswordLogin;
 
-    @FindBy(xpath = "//input[@value='Авторизоваться']")
-    private WebElement buttonAuthorizationLogin;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
+    private WebElement clickButtonAuthorization;
 
-    @FindBy(xpath = "//h2[text()='Регистрация']")
-    private WebElement titleRegistration;
+    @FindBy(xpath = "//div[@class='col-md-6'][2]/h2")
+    private WebElement formTitleRegistration;
 
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputNameRegistration;
@@ -34,7 +34,22 @@ public class UserLoginPage extends AbstractPage {
     private WebElement inputPasswordRegistration;
 
     @FindBy(xpath = "//input[@name='act_register_now']")
-    private WebElement buttonAuthorizationRegistration;
+    private WebElement clickButtonRegistration;
+
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//tr[1]/td[1]")
+    private WebElement titleEmailLogin;
+
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//tr[2]/td[1]")
+    private WebElement titlePasswordLogin;
+
+    @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[1]/td[1]")
+    private WebElement titleNameRegistration;
+
+    @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[2]/td[1]")
+    private WebElement titleEmailRegistration;
+
+    @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[3]/td[1]")
+    private WebElement titlePasswordRegistration;
 
     public UserLoginPage(WebDriver driver) {
         this.driver = driver;
@@ -47,27 +62,27 @@ public class UserLoginPage extends AbstractPage {
     }
 
     public UserLoginPage getNameTitleLogin() {
-        pageTitleLogin.getText();
+        formTitleLogin.getText();
         return this;
     }
 
     public UserLoginPage getNameTitleRegistration() {
-        titleRegistration.getText();
+        formTitleRegistration.getText();
         return this;
     }
 
-    public UserLoginPage inputEmailLogin(String name) {
-        inputEmailLogin.sendKeys(name);
+    public UserLoginPage inputEmailLogin(String email) {
+        inputEmailLogin.sendKeys(email);
         return this;
     }
 
-    public UserLoginPage inputPasswordLogin(String name) {
-        inputPasswordLogin.sendKeys(name);
+    public UserLoginPage inputPasswordLogin(String password) {
+        inputPasswordLogin.sendKeys(password);
         return this;
     }
 
-    public UserLoginPage clickButtonAuthorizationLogin() {
-        inputEmailLogin.click();
+    public UserLoginPage clickButtonAuthorization() {
+        clickButtonAuthorization.click();
         return this;
     }
 
@@ -76,18 +91,50 @@ public class UserLoginPage extends AbstractPage {
         return this;
     }
 
-    public UserLoginPage inputEmailRegistration(String name) {
-        inputEmailRegistration.sendKeys(name);
+    public UserLoginPage inputEmailRegistration(String email) {
+        inputEmailRegistration.sendKeys(email);
         return this;
     }
 
-    public UserLoginPage inputPasswordRegistrationForm(String name) {
-        inputPasswordRegistration.sendKeys(name);
+    public UserLoginPage inputPasswordRegistrationForm(String password) {
+        inputPasswordRegistration.sendKeys(password);
         return this;
     }
 
-    public UserLoginPage clickButtonAuthorizationRegistration() {
-        buttonAuthorizationRegistration.click();
+    public UserLoginPage clickButtonRegistration() {
+        clickButtonRegistration.click();
+        return this;
+    }
+
+    public UserLoginPage getTitleEmailLogin() {
+        titleEmailLogin.getText();
+        return this;
+    }
+
+    public UserLoginPage getTitlePasswordLogin() {
+        titlePasswordLogin.getText();
+        return this;
+    }
+
+    public UserLoginPage getTitleNameRegistration() {
+        titleNameRegistration.getText();
+        return this;
+    }
+
+    public UserLoginPage getTitleEmailRegistration() {
+        titleEmailRegistration.getText();
+        return this;
+    }
+
+    public UserLoginPage getTitlePasswordRegistration() {
+        titlePasswordRegistration.getText();
+        return this;
+    }
+
+    public UserLoginPage fillFormLogin(String email, String password){
+        inputNameRegistration(email);
+        inputPasswordLogin(password);
+        clickButtonAuthorization.click();
         return this;
     }
 }
