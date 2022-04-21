@@ -19,7 +19,7 @@ public class UserLoginPage extends AbstractPage {
     private WebElement inputPasswordLogin;
 
     @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
-    private WebElement clickButtonAuthorization;
+    private WebElement buttonAuthorization;
 
     @FindBy(xpath = "//div[@class='col-md-6'][2]/h2")
     private WebElement formTitleRegistration;
@@ -34,7 +34,7 @@ public class UserLoginPage extends AbstractPage {
     private WebElement inputPasswordRegistration;
 
     @FindBy(xpath = "//input[@name='act_register_now']")
-    private WebElement clickButtonRegistration;
+    private WebElement buttonRegistration;
 
     @FindBy(xpath = "//form[@action='/user/login/index.html']//tr[1]/td[1]")
     private WebElement titleEmailLogin;
@@ -61,14 +61,12 @@ public class UserLoginPage extends AbstractPage {
         return this;
     }
 
-    public UserLoginPage getNameTitleLogin() {
-        formTitleLogin.getText();
-        return this;
+    public String getNameTitleLogin() {
+        return formTitleLogin.getText();
     }
 
-    public UserLoginPage getNameTitleRegistration() {
-        formTitleRegistration.getText();
-        return this;
+    public String getNameTitleRegistration() {
+        return formTitleRegistration.getText();
     }
 
     public UserLoginPage inputEmailLogin(String email) {
@@ -81,9 +79,9 @@ public class UserLoginPage extends AbstractPage {
         return this;
     }
 
-    public UserLoginPage clickButtonAuthorization() {
-        clickButtonAuthorization.click();
-        return this;
+    public AuthorizedUserHomePage clickButtonAuthorization() {
+        buttonAuthorization.click();
+        return new AuthorizedUserHomePage(driver);
     }
 
     public UserLoginPage inputNameRegistration(String name) {
@@ -101,48 +99,51 @@ public class UserLoginPage extends AbstractPage {
         return this;
     }
 
-    public UserLoginPage clickButtonRegistration() {
-        clickButtonRegistration.click();
-        return this;
+    public AuthorizedUserHomePage clickButtonRegistration() {
+        buttonRegistration.click();
+        return new AuthorizedUserHomePage(driver);
     }
 
-    public UserLoginPage getTitleEmailLogin() {
-        titleEmailLogin.getText();
-        return this;
+    public String getTitleEmailLogin() {
+        return titleEmailLogin.getText();
     }
 
-    public UserLoginPage getTitlePasswordLogin() {
-        titlePasswordLogin.getText();
-        return this;
+    public String getTitlePasswordLogin() {
+        return titlePasswordLogin.getText();
     }
 
-    public UserLoginPage getTitleNameRegistration() {
-        titleNameRegistration.getText();
-        return this;
+    public String getButtonAuthorizationName(){
+        return buttonAuthorization.getAttribute("value");
     }
 
-    public UserLoginPage getTitleEmailRegistration() {
-        titleEmailRegistration.getText();
-        return this;
+    public String getTitleNameRegistration() {
+        return titleNameRegistration.getText();
     }
 
-    public UserLoginPage getTitlePasswordRegistration() {
-        titlePasswordRegistration.getText();
-        return this;
+    public String getTitleEmailRegistration() {
+        return titleEmailRegistration.getText();
     }
 
-    public UserLoginPage fillFormLogin(String email, String password){
+    public String getTitlePasswordRegistration() {
+        return titlePasswordRegistration.getText();
+    }
+
+    public String getButtonRegistrationName(){
+        return buttonRegistration.getAttribute("value");
+    }
+
+    public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password){
         inputEmailLogin(email);
         inputPasswordLogin(password);
-        clickButtonAuthorization.click();
-        return this;
+        buttonAuthorization.click();
+        return new AuthorizedUserHomePage(driver);
     }
 
-    public UserLoginPage fillFormRegistration(String name, String email, String password){
+    public AuthorizedUserHomePage fillFormRegistration(String name, String email, String password){
         inputNameRegistration(name);
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
-        clickButtonRegistration.click();
-        return this;
+        buttonRegistration.click();
+        return new AuthorizedUserHomePage(driver);
     }
 }
