@@ -9,7 +9,6 @@ abstract class AbstractTest {
     @BeforeClass
     public void setUp() {
         driver = new ChromeDriver();
-
     }
 
     @AfterClass
