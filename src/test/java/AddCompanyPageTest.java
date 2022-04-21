@@ -49,7 +49,7 @@ public class AddCompanyPageTest extends AbstractTest {
     }
 
     @Test(groups = "authorizedUser")
-    public void testAddCompanyPageFieldsTypes(){
+    public void testAddCompanyPageFieldsTypes() {
         //надо ли проверять типы полей формы (text, button, select...)?
     }
 
