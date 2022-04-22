@@ -8,7 +8,7 @@ import utils.UserCreator;
 public class TasksPageTest extends AbstractTest {
 
     @Test
-    public void testUITaksPage() {
+    public void testUITasksPage() {
         TasksPage tasksPage = new UserLoginPage(driver).openPage()
                 .fillFormRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword())
                 .clickButtonTasks();
