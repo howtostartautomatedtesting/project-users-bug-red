@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 public class AddTaskPage extends AbstractPage {
     private WebDriver driver;
     public static final String ADD_TASK_PAGE_URL = BASE_URL + "/tasks/add.html";
-    public static final String ADD_TASK_PAGE = BASE_URL + "/user/login/index.html";
 
     public AddTaskPage(WebDriver driver) {
         this.driver = driver;
@@ -32,30 +31,11 @@ public class AddTaskPage extends AbstractPage {
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement inputResponsible;
-    @FindBy(xpath = "//input[@type='submit']")
-    private WebElement buttonAddTask;
-    @FindBy(xpath = "//input[@type='submit']")
-    private WebElement buttonTask;
-    @FindBy(xpath = "//input[@name='login']")
-    private WebElement inputLogin;
-    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
-    private WebElement inputPassword;
-    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
-    private WebElement buttonAuthorization;
     @FindBy(xpath = "//form[@action='/tasks/do']//input[@value='Добавить задачу']")
-    private WebElement selectButtonAddTask;
+    private WebElement buttonAddTask;
 
-
-    public AddTaskPage fillFormLoginAndPassword(String name, String password) {
-        openPageLogin();
-        inputLogin.sendKeys(name);
-        inputPassword.sendKeys(password);
-        buttonAuthorization.click();
-        return this;
-    }
-
-    public String getButtonAddTaskPage() {
-        return selectButtonAddTask.getText();
+    public String getButtonAddTaskPageText() {
+        return buttonAddTask.getText();
     }
 
     public String getHeadingAddTaskText() {
@@ -72,12 +52,6 @@ public class AddTaskPage extends AbstractPage {
 
     public String getLabelResponsibleText() {
         return labelResponsible.getText();
-    }
-
-
-    public AddTaskPage openPageLogin() {
-        driver.get(ADD_TASK_PAGE);
-        return this;
     }
 
     public AddTaskPage fillName(String name) {
