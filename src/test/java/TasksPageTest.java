@@ -3,13 +3,14 @@ import org.testng.annotations.Test;
 import pageobjects.TasksPage;
 import pageobjects.UserLoginPage;
 import uiTitles.TasksPageUITitles;
+import utils.UserCreator;
 
 public class TasksPageTest extends AbstractTest {
 
     @Test
     public void testUITaksPage() {
         TasksPage tasksPage = new UserLoginPage(driver).openPage()
-                .fillFormLogin("barsov86@yandex.ru", "123")
+                .fillFormRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword())
                 .clickButtonTasks();
 
         Assert.assertEquals(tasksPage.getPageTitle(), TasksPageUITitles.EXPECTED_PAGE_TITLE);
