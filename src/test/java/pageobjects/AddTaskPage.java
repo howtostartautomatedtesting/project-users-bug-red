@@ -8,8 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddTaskPage extends AbstractPage {
     private WebDriver driver;
+    public static final String ADD_TASK_PAGE_URL = BASE_URL + "/tasks/add.html";
+    public static final String ADD_TASK_PAGE = BASE_URL + "/user/login/index.html";
 
-    AddTaskPage(WebDriver driver) {
+    public AddTaskPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -32,7 +34,22 @@ public class AddTaskPage extends AbstractPage {
     private WebElement inputResponsible;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement buttonAddTask;
+    @FindBy(xpath = "//input[@type='submit']")
+    private WebElement buttonTask;
+    @FindBy(xpath = "//input[@name='login']")
+    private WebElement inputLogin;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
+    private WebElement inputPassword;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
+    private WebElement buttonAuthorization;
 
+    public AddTaskPage fillFormLoginAndPassword(String name, String password){
+        openPageLogin();
+        inputLogin.sendKeys(name);
+        inputPassword.sendKeys(password);
+        buttonAuthorization.click();
+        return this;
+    }
 
     public String getHeadingAddTaskText() {
         return headingAddTask.getText();
@@ -48,6 +65,12 @@ public class AddTaskPage extends AbstractPage {
 
     public String getLabelResponsibleText() {
         return labelResponsible.getText();
+    }
+
+
+    public AddTaskPage openPageLogin() {
+        driver.get(ADD_TASK_PAGE);
+        return this;
     }
 
     public AddTaskPage fillName(String name) {
@@ -66,10 +89,11 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-   /* public TasksPage clickButtonAddTask() {
+
+   public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
-    } */
+    }
 
     public AddTaskPage fillFormTaskAdd(String name, String description, String responsible) {
         fillName(name);
