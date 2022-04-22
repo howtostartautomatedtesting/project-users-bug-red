@@ -7,7 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserFullProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/218184";
+    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/668315";
+    private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
 
     public UserFullProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -44,6 +45,33 @@ public class UserFullProfilePage extends AbstractPage {
     private WebElement labelINN;
     @FindBy(xpath = "//tr[18]/td[2]")
     private WebElement enteredINN;
+
+    @FindBy(xpath = "//input[@name='login']")
+    private WebElement inputLogin;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
+    private WebElement inputPassword;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
+    private WebElement buttonAuthorization;
+
+    @FindBy(xpath = "//a[@class='dropdown-toggle']")
+    private WebElement menuUserName;
+    @FindBy(xpath = "//a[@href='/user/profile/index.html']")
+    private WebElement menuUserProfile;
+
+    public UserFullProfilePage openUsersLoginPage() {
+        driver.get(USER_LOGIN_PAGE_URL);
+        return this;
+    }
+
+    public UserFullProfilePage fillFormLoginUser(String email, String password){
+        openUsersLoginPage();
+        inputLogin.sendKeys(email);
+        inputPassword.sendKeys(password);
+        buttonAuthorization.click();
+        menuUserName.click();
+        menuUserProfile.click();
+        return this;
+    }
 
     public UserFullProfilePage openUsersPage() {
         driver.get(USER_FULL_PROFILE_PAGE_URL);
