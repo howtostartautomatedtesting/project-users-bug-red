@@ -65,10 +65,10 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[@class='btn btn-success'])[1]")
     private WebElement buttonView;
 
-    @FindBy(xpath = "//form[@action='/user/admin/index']//tr[2]/td[1]/text()")
+    @FindBy(xpath = "//form[@action='/user/admin/index']//tr[2]/td[1]")
     private WebElement titleDateFrom;
 
-    @FindBy(xpath = "//form[@action='/user/admin/index']//tr[2]/td[2]/text()")
+    @FindBy(xpath = "//form[@action='/user/admin/index']//tr[2]/td[2]")
     private WebElement titleDateTill;
 
     @FindBy(xpath = "//table[@class='table']//th")
