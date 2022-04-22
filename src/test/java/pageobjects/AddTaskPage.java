@@ -42,8 +42,11 @@ public class AddTaskPage extends AbstractPage {
     private WebElement inputPassword;
     @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
     private WebElement buttonAuthorization;
+    @FindBy(xpath = "//form[@action='/tasks/do']//input[@value='Добавить задачу']")
+    private WebElement selectButtonAddTask;
 
-    public AddTaskPage fillFormLoginAndPassword(String name, String password){
+
+    public AddTaskPage fillFormLoginAndPassword(String name, String password) {
         openPageLogin();
         inputLogin.sendKeys(name);
         inputPassword.sendKeys(password);
@@ -51,8 +54,8 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-    public String getButtonAddTask() {
-        return buttonAuthorization.getAttribute("value");
+    public String getButtonAddTaskPage() {
+        return selectButtonAddTask.getText();
     }
 
     public String getHeadingAddTaskText() {
@@ -94,7 +97,7 @@ public class AddTaskPage extends AbstractPage {
     }
 
 
-   public TasksPage clickButtonAddTask() {
+    public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
     }
@@ -106,12 +109,12 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-  /*  public TasksPage createNewTask(String name, String description, String responsible) {
+   public TasksPage createNewTask(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
-}*/
+}
 
 }
