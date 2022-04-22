@@ -38,6 +38,10 @@ public class AddTaskPage extends AbstractPage {
         return buttonAddTask.getText();
     }
 
+    public String getButtonAddTask() {
+        return buttonAuthorization.getAttribute("value");
+    }
+
     public String getHeadingAddTaskText() {
         return headingAddTask.getText();
     }
