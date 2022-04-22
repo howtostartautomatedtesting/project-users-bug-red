@@ -83,6 +83,12 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//table[@class='table']//th[4]")
     private WebElement titleHeaderTableDateOfChange;
 
+    @FindBy(xpath = "//table[@class='table']//th[5]")
+    private WebElement titleHeaderTableChange;
+
+    @FindBy(xpath = "//table[@class='table']//th[6]")
+    private WebElement titleHeaderTableDelete;
+
     @FindBy(xpath = "//a[@href='?sort_type=asc&sort_field=date_updated']")
     private WebElement sortDateOfChangeAscent;
 
@@ -119,6 +125,30 @@ public class HomePage extends AbstractPage {
 
     public String getFormTitleUsers() {
         return formTitleUsers.getText();
+    }
+
+    public String getTitleInputDateStart() {
+        return inputDateStart.getAttribute("type");
+    }
+
+    public String getTitleInputDateEnd() {
+        return inputDateEnd.getAttribute("type");
+    }
+
+    public String getTitleInputSearch() {
+        return inputSearch.getAttribute("placeholder");
+    }
+
+    public String getTitleButtonUsers() {
+        return buttonUsers.getText();
+    }
+
+    public String getTitleButtonSearch() {
+        return buttonSearch.getText();
+    }
+
+    public String getTitleButtonLogin() {
+        return buttonLogin.getText();
     }
 
     public String getTitleDateOfChange() {
@@ -179,6 +209,14 @@ public class HomePage extends AbstractPage {
 
     public String getTitleHeaderTableDateOfChange() {
         return titleHeaderTableDateOfChange.getText();
+    }
+
+    public String getTitleHeaderTableChange() {
+        return titleHeaderTableChange.getText();
+    }
+
+    public String getTitleHeaderTableDelete() {
+        return titleHeaderTableDelete.getText();
     }
 
     public HomePage clickSortDateOfChangeAscent() {
