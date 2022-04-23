@@ -7,7 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserFullProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/218184";
+    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/668315";
+    private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
 
     public UserFullProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -44,6 +45,88 @@ public class UserFullProfilePage extends AbstractPage {
     private WebElement labelINN;
     @FindBy(xpath = "//tr[18]/td[2]")
     private WebElement enteredINN;
+
+    @FindBy(xpath = "//input[@name='login']")
+    private WebElement inputLogin;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
+    private WebElement inputPassword;
+    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
+    private WebElement buttonAuthorization;
+
+    @FindBy(xpath = "//a[@class='dropdown-toggle']")
+    private WebElement menuUserName;
+    @FindBy(xpath = "//a[@href='/user/profile/index.html']")
+    private WebElement menuUserProfile;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[7]/td[1]")
+    private WebElement labelNameOne;
+    @FindBy(xpath = "//table[@class='table center']//tr[7]/td[2]")
+    private WebElement inputNameOne;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[8]/td[1]")
+    private WebElement labelSurnameOne;
+    @FindBy(xpath = "//table[@class='table center']//tr[8]/td[2]")
+    private WebElement inputSurnameOne;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[9]/td[1]")
+    private WebElement labelPatronymicOne;
+    @FindBy(xpath = "//table[@class='table center']//tr[9]/td[2]")
+    private WebElement inputPatronymicOne;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[10]/td[1]")
+    private WebElement labelCat;
+    @FindBy(xpath = "//table[@class='table center']//tr[10]/td[2]")
+    private WebElement inputCat;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[11]/td[1]")
+    private WebElement labelDog;
+    @FindBy(xpath = "//table[@class='table center']//tr[11]/td[2]")
+    private WebElement inputDog;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[12]/td[1]")
+    private WebElement labelParrot;
+    @FindBy(xpath = "//table[@class='table center']//tr[12]/td[2]")
+    private WebElement inputParrot;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[13]/td[1]")
+    private WebElement labelCavy;
+    @FindBy(xpath = "//table[@class='table center']//tr[13]/td[2]")
+    private WebElement inputCavy;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[14]/td[1]")
+    private WebElement labelHamster;
+    @FindBy(xpath = "//table[@class='table center']//tr[14]/td[2]")
+    private WebElement inputHamster;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[15]/td[1]")
+    private WebElement labelSquirrel;
+    @FindBy(xpath = "//table[@class='table center']//tr[15]/td[2]")
+    private WebElement inputSquirrel;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[16]/td[1]")
+    private WebElement labelPhone;
+    @FindBy(xpath = "//table[@class='table center']//tr[16]/td[2]")
+    private WebElement inputPhone;
+
+    @FindBy(xpath = "//table[@class='table center']//tr[17]/td[1]")
+    private WebElement labelAddress;
+    @FindBy(xpath = "//table[@class='table center']//tr[17]/td[2]")
+    private WebElement inputAddress;
+
+    public UserFullProfilePage openUsersLoginPage() {
+        driver.get(USER_LOGIN_PAGE_URL);
+        return this;
+    }
+
+    public UserFullProfilePage fillFormLoginUser(String email, String password) {
+        openUsersLoginPage();
+        inputLogin.sendKeys(email);
+        inputPassword.sendKeys(password);
+        buttonAuthorization.click();
+        menuUserName.click();
+        menuUserProfile.click();
+        return this;
+    }
 
     public UserFullProfilePage openUsersPage() {
         driver.get(USER_FULL_PROFILE_PAGE_URL);
@@ -109,5 +192,95 @@ public class UserFullProfilePage extends AbstractPage {
     public String getEnteredINN() {
         return enteredINN.getText();
     }
+
+    public String getLabelNameOne() {
+        return labelNameOne.getText();
+    }
+
+    public String getInputNameOne() {
+        return inputNameOne.getText();
+    }
+
+    public String getLabelSurnameOne() {
+        return labelSurnameOne.getText();
+    }
+
+    public String getInputSurnameOne() {
+        return inputSurnameOne.getText();
+    }
+
+    public String getLabelPatronymicOne() {
+        return labelPatronymicOne.getText();
+    }
+
+    public String getInputPatronymicOne() {
+        return inputPatronymicOne.getText();
+    }
+
+    public String getLabelCat() {
+        return labelCat.getText();
+    }
+
+    public String getInputCat() {
+        return inputCat.getText();
+    }
+
+    public String getLabelDog() {
+        return labelDog.getText();
+    }
+
+    public String getInputDog() {
+        return inputDog.getText();
+    }
+
+    public String getLabelParrot() {
+        return labelParrot.getText();
+    }
+
+    public String getInputParrot() {
+        return inputParrot.getText();
+    }
+
+    public String getLabelCavy() {
+        return labelCavy.getText();
+    }
+
+    public String getInputCavy() {
+        return inputCavy.getText();
+    }
+
+    public String getLabelHamster() {
+        return labelHamster.getText();
+    }
+
+    public String getInputHamster() {
+        return inputHamster.getText();
+    }
+
+    public String getLabelSquirrel() {
+        return labelSquirrel.getText();
+    }
+
+    public String getInputSquirrel() {
+        return inputSquirrel.getText();
+    }
+
+    public String getLabelPhone() {
+        return labelPhone.getText();
+    }
+
+    public String getInputPhone() {
+        return inputPhone.getText();
+    }
+
+    public String getLabelAddress() {
+        return labelAddress.getText();
+    }
+
+    public String getInputAddress() {
+        return inputAddress.getText();
+    }
+
+
 }
 
