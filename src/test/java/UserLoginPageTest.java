@@ -1,10 +1,18 @@
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
+import pageobjects.AuthorizedUserHomePage;
+import pageobjects.HomePage;
 import pageobjects.UserLoginPage;
 import uiTitles.UserLoginPageUITitles;
+import utils.UserCreator;
 
 import static org.testng.Assert.assertEquals;
 
 public class UserLoginPageTest extends AbstractTest {
+
+    private String authorizedUserName;
+    private String authorizedUserMail;
+    private String authorizedUserPassword;
 
     @Test
     public void testUserLoginPageFormNames() {
@@ -20,4 +28,39 @@ public class UserLoginPageTest extends AbstractTest {
         assertEquals(userLoginPage.getButtonAuthorizationName(), UserLoginPageUITitles.EXPECTED_BUTTON_AUTHORIZATION_TITLE);
         assertEquals(userLoginPage.getButtonRegistrationName(), UserLoginPageUITitles.EXPECTED_BUTTON_REGISTRATION_TITLE);
     }
+
+    @BeforeGroups("authorizedUser")
+    public void registrationToAccount() {
+        authorizedUserName = UserCreator.getUserName();
+        authorizedUserMail = UserCreator.getEmail();
+        authorizedUserPassword = UserCreator.getPassword();
+        new UserLoginPage(driver).openPage()
+                .fillFormRegistrationAndClickButtonRegistration(authorizedUserName,authorizedUserMail, authorizedUserPassword)
+                .logOutAuthorizedUserPage();
+    }
+
+    @Test(groups = "authorizedUser")
+    public void testUserLoginPageWithValidData() {
+        AuthorizedUserHomePage authorizedUserHomePage = new HomePage(driver).openPage()
+                .clickButtonLogin()
+                .fillFormLoginAndClickButtonAuthorization(authorizedUserMail, authorizedUserPassword);
+        assertEquals(authorizedUserHomePage.getAuthorizedUserName(), authorizedUserName.toLowerCase());
+    }
+
+    @Test
+    public void testUserLoginPageWithInvalidEmail(){
+
+    }
+
+    @Test
+    public void testUserLoginPageWithInvalidPassword(){
+
+    }
+
+    @Test
+    public void testUserLoginPageWithInvalidData(){
+
+    }
+
+
 }
