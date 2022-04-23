@@ -29,6 +29,8 @@ public class CompaniesPage extends AbstractPage {
     private WebElement columnTitleAuthor;
     @FindBy(xpath = "//table/thead//td[4]")
     private WebElement columnTitleDateOfChange;
+    @FindBy(xpath = "//a[text()='Добавить компанию']")
+    private WebElement buttonAddCompany;
 
     public CompaniesPage(WebDriver driver) {
         this.driver = driver;
@@ -55,6 +57,11 @@ public class CompaniesPage extends AbstractPage {
         return this;
     }
 
+    public AddCompanyPage clickButtonAddCompany(){
+        buttonAddCompany.click();
+        return new AddCompanyPage(driver);
+    }
+
     public String getHeaderCompanies(){
         return labelHeaderTitle.getText();
     }
@@ -78,4 +85,6 @@ public class CompaniesPage extends AbstractPage {
     public String getColumnTitleDateOfChange(){
         return columnTitleDateOfChange.getText();
     }
+
+
 }
