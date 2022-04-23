@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserLoginPage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_LOGIN_URL = BASE_URL + "/user/login/index.html";
+    public static final String USER_LOGIN_URL = BASE_URL + "/user/login/index.html";
 
     @FindBy(xpath = "//div[@class='col-md-6'][1]/h2")
     private WebElement formTitleLogin;

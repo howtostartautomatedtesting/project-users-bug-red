@@ -35,7 +35,7 @@ public class UserLoginPageTest extends AbstractTest {
         authorizedUserMail = UserCreator.getEmail();
         authorizedUserPassword = UserCreator.getPassword();
         new UserLoginPage(driver).openPage()
-                .fillFormRegistrationAndClickButtonRegistration(authorizedUserName,authorizedUserMail, authorizedUserPassword)
+                .fillFormRegistrationAndClickButtonRegistration(authorizedUserName, authorizedUserMail, authorizedUserPassword)
                 .logOutAuthorizedUserPage();
     }
 
@@ -47,20 +47,28 @@ public class UserLoginPageTest extends AbstractTest {
         assertEquals(authorizedUserHomePage.getAuthorizedUserName(), authorizedUserName.toLowerCase());
     }
 
-    @Test
-    public void testUserLoginPageWithInvalidEmail(){
-
+    @Test(groups = "authorizedUser")
+    public void testUserLoginPageWithInvalidEmail() {
+        new HomePage(driver).openPage()
+                .clickButtonLogin()
+                .fillFormLoginAndClickButtonAuthorization(" ", authorizedUserPassword);
+        assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
     }
 
-    @Test
-    public void testUserLoginPageWithInvalidPassword(){
-
+    @Test(groups = "authorizedUser")
+    public void testUserLoginPageWithInvalidPassword() {
+        new HomePage(driver).openPage()
+                .clickButtonLogin()
+                .fillFormLoginAndClickButtonAuthorization(authorizedUserMail, " ");
+        assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
     }
 
-    @Test
-    public void testUserLoginPageWithInvalidData(){
-
+    @Test(groups = "authorizedUser")
+    public void testUserLoginPageWithInvalidData() {
+        new HomePage(driver).openPage()
+                .clickButtonLogin()
+                .fillFormLoginAndClickButtonAuthorization(" ", " ");
+        assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
     }
-
 
 }
