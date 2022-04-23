@@ -38,6 +38,11 @@ public class AddTaskPage extends AbstractPage {
         return buttonAddTask.getText();
     }
 
+    public EditTaskPage getButtonAddTaskPage() {
+        buttonAddTask.click();
+        return new EditTaskPage(driver);
+    }
+
     public String getHeadingAddTaskText() {
         return headingAddTask.getText();
     }
@@ -83,12 +88,11 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-   public TasksPage createNewTask(String name, String description, String responsible) {
+    public EditTaskPage createNewTask(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
         clickButtonAddTask();
-        return new TasksPage(driver);
-}
-
+        return new EditTaskPage(driver);
+    }
 }

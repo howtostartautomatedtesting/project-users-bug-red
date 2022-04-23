@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.*;
-import title.TitleAddTaskPage;
+import title.TitleTaskPage;
 
 public class AddTaskPageTest extends AbstractTest {
 
@@ -12,11 +12,11 @@ public class AddTaskPageTest extends AbstractTest {
                 .fillFormRegistration(CreatorNewUsers.getUserName(), CreatorNewUsers.getEmail(), CreatorNewUsers.getPassword())
                 .clickButtonTasks().addNewTask();
 
-        Assert.assertEquals(addTaskPage.getHeadingAddTaskText(), TitleAddTaskPage.EXPECTED_PAGE_HEADING_TITLE);
-        Assert.assertEquals(addTaskPage.getLabelNameText(), TitleAddTaskPage.EXPECTED_FIELD_TASK_NAME_TITLE);
-        Assert.assertEquals(addTaskPage.getLabelResponsibleText(), TitleAddTaskPage.EXPECTED_FIELD_RESPONSIBLE_TITLE);
-        Assert.assertEquals(addTaskPage.getLabelDescriptionText(), TitleAddTaskPage.EXPECTED_FIELD_DESCRIPTION_TITLE);
-        Assert.assertEquals(addTaskPage.getButtonAddTaskPageText(), TitleAddTaskPage.EXPECTED_BUTTON_ADD_TASK_TITLE);
+        Assert.assertEquals(addTaskPage.getHeadingAddTaskText(), TitleTaskPage.EXPECTED_PAGE_HEADING_TITLE);
+        Assert.assertEquals(addTaskPage.getLabelNameText(), TitleTaskPage.EXPECTED_FIELD_TASK_NAME_TITLE);
+        Assert.assertEquals(addTaskPage.getLabelResponsibleText(), TitleTaskPage.EXPECTED_FIELD_RESPONSIBLE_TITLE);
+        Assert.assertEquals(addTaskPage.getLabelDescriptionText(), TitleTaskPage.EXPECTED_FIELD_DESCRIPTION_TITLE);
+        Assert.assertEquals(addTaskPage.getButtonAddTaskPageText(), TitleTaskPage.EXPECTED_BUTTON_ADD_TASK_TITLE);
 
     }
 }

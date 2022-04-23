@@ -29,6 +29,8 @@ public class EditTaskPage extends AbstractPage {
     @FindBy(xpath = "//select[@name='user']")
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@type='submit']")
+    private WebElement buttonAddNewTask;
+    @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
     private WebElement buttonChangeTask;
 
     public String getHeadingEditTaskText() {
@@ -51,6 +53,15 @@ public class EditTaskPage extends AbstractPage {
         inputName.clear();
         inputName.sendKeys(name);
         return this;
+    }
+
+    public String getButtonEditTaskPageText() {
+        return buttonAddNewTask.getText();
+    }
+
+    public EditTaskPage getButtonChangeTask(){
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
     }
 
     public EditTaskPage fillDescription(String description) {
