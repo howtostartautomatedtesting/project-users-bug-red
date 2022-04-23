@@ -10,7 +10,7 @@ public class TasksPageTest extends AbstractTest {
     @Test
     public void testUITasksPage() {
         TasksPage tasksPage = new UserLoginPage(driver).openPage()
-                .fillFormRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword())
+                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword())
                 .clickButtonTasks();
         Assert.assertEquals(tasksPage.getPageTitle(), TasksPageUITitles.EXPECTED_PAGE_TITLE);
         Assert.assertEquals(tasksPage.getColumnTitleTaskName(), TasksPageUITitles.EXPECTED_COLUMN_TASK_NAME_TITLE);
