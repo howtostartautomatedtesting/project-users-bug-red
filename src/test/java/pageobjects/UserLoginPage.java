@@ -144,5 +144,6 @@ public class UserLoginPage extends AbstractPage {
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
         buttonRegistration.click();
+        return new AuthorizedUserHomePage(driver);
     }
 }
