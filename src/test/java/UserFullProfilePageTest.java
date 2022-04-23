@@ -1,14 +1,34 @@
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserFullProfilePage;
+import pageobjects.UserLoginPage;
+import pageobjects.UserProfilePage;
 
 public class UserFullProfilePageTest extends AbstractTest {
+    UserLoginPage userLoginPage;
+    AuthorizedUserHomePage authorizedUserHomePage;
+    UserProfilePage userProfilePage;
+    UserFullProfilePage userFullProfilePage;
+
+    @BeforeMethod
+    public void pathToPageUserFullProfile(){
+        userLoginPage = new UserLoginPage(driver);
+        authorizedUserHomePage = new AuthorizedUserHomePage(driver);
+        userProfilePage = new UserProfilePage(driver);
+
+        userLoginPage
+                .openPage()
+                .fillFormLogin("ira@mail.ru", "12345");
+        authorizedUserHomePage.openUserProfilePage();
+        userProfilePage.clickButtonFullProfile();
+    }
 
     @Test
-    public void testOpenPage() throws InterruptedException {
-        UserFullProfilePage userFullProfilePage = new UserFullProfilePage(driver);
-        userFullProfilePage.fillFormLoginUser("ira@mail.ru", "12345");
-        userFullProfilePage.openUsersPage();
+    public void testUserFullProfilePageUI() throws InterruptedException {
+        userFullProfilePage = new UserFullProfilePage(driver);
+
         Assert.assertEquals(userFullProfilePage.getHeadingProfile(), "Профиль пользователя");
         Assert.assertEquals(userFullProfilePage.getLabelEmailText(), "Email");
         Assert.assertEquals(userFullProfilePage.getEnteredEmail(), "ira@mail.ru");
@@ -47,6 +67,6 @@ public class UserFullProfilePageTest extends AbstractTest {
         Assert.assertEquals(userFullProfilePage.getLabelINNText(), "ИНН");
         Assert.assertEquals(userFullProfilePage.getEnteredINN(), "");
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 }
