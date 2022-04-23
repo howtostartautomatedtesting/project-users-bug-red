@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserFullProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/668315";
-    private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
 
     public UserFullProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -45,93 +43,50 @@ public class UserFullProfilePage extends AbstractPage {
     private WebElement labelINN;
     @FindBy(xpath = "//tr[18]/td[2]")
     private WebElement enteredINN;
-
-    @FindBy(xpath = "//input[@name='login']")
-    private WebElement inputLogin;
-    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
-    private WebElement inputPassword;
-    @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
-    private WebElement buttonAuthorization;
-
-    @FindBy(xpath = "//a[@class='dropdown-toggle']")
-    private WebElement menuUserName;
-    @FindBy(xpath = "//a[@href='/user/profile/index.html']")
-    private WebElement menuUserProfile;
-
     @FindBy(xpath = "//table[@class='table center']//tr[7]/td[1]")
     private WebElement labelNameOne;
     @FindBy(xpath = "//table[@class='table center']//tr[7]/td[2]")
     private WebElement inputNameOne;
-
     @FindBy(xpath = "//table[@class='table center']//tr[8]/td[1]")
     private WebElement labelSurnameOne;
     @FindBy(xpath = "//table[@class='table center']//tr[8]/td[2]")
     private WebElement inputSurnameOne;
-
     @FindBy(xpath = "//table[@class='table center']//tr[9]/td[1]")
     private WebElement labelPatronymicOne;
     @FindBy(xpath = "//table[@class='table center']//tr[9]/td[2]")
     private WebElement inputPatronymicOne;
-
     @FindBy(xpath = "//table[@class='table center']//tr[10]/td[1]")
     private WebElement labelCat;
     @FindBy(xpath = "//table[@class='table center']//tr[10]/td[2]")
     private WebElement inputCat;
-
     @FindBy(xpath = "//table[@class='table center']//tr[11]/td[1]")
     private WebElement labelDog;
     @FindBy(xpath = "//table[@class='table center']//tr[11]/td[2]")
     private WebElement inputDog;
-
     @FindBy(xpath = "//table[@class='table center']//tr[12]/td[1]")
     private WebElement labelParrot;
     @FindBy(xpath = "//table[@class='table center']//tr[12]/td[2]")
     private WebElement inputParrot;
-
     @FindBy(xpath = "//table[@class='table center']//tr[13]/td[1]")
     private WebElement labelCavy;
     @FindBy(xpath = "//table[@class='table center']//tr[13]/td[2]")
     private WebElement inputCavy;
-
     @FindBy(xpath = "//table[@class='table center']//tr[14]/td[1]")
     private WebElement labelHamster;
     @FindBy(xpath = "//table[@class='table center']//tr[14]/td[2]")
     private WebElement inputHamster;
-
     @FindBy(xpath = "//table[@class='table center']//tr[15]/td[1]")
     private WebElement labelSquirrel;
     @FindBy(xpath = "//table[@class='table center']//tr[15]/td[2]")
     private WebElement inputSquirrel;
-
     @FindBy(xpath = "//table[@class='table center']//tr[16]/td[1]")
     private WebElement labelPhone;
     @FindBy(xpath = "//table[@class='table center']//tr[16]/td[2]")
     private WebElement inputPhone;
-
     @FindBy(xpath = "//table[@class='table center']//tr[17]/td[1]")
     private WebElement labelAddress;
     @FindBy(xpath = "//table[@class='table center']//tr[17]/td[2]")
     private WebElement inputAddress;
-
-    public UserFullProfilePage openUsersLoginPage() {
-        driver.get(USER_LOGIN_PAGE_URL);
-        return this;
-    }
-
-    public UserFullProfilePage fillFormLoginUser(String email, String password) {
-        openUsersLoginPage();
-        inputLogin.sendKeys(email);
-        inputPassword.sendKeys(password);
-        buttonAuthorization.click();
-        menuUserName.click();
-        menuUserProfile.click();
-        return this;
-    }
-
-    public UserFullProfilePage openUsersPage() {
-        driver.get(USER_FULL_PROFILE_PAGE_URL);
-        return this;
-    }
 
     public String getHeadingProfile() {
         return headingProfile.getText();
@@ -280,7 +235,4 @@ public class UserFullProfilePage extends AbstractPage {
     public String getInputAddress() {
         return inputAddress.getText();
     }
-
-
 }
-
