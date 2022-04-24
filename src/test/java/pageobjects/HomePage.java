@@ -92,6 +92,12 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//ul[@class='pagination']/li[@class='next']")
     private WebElement typePaginationNext;
 
+    @FindBy(xpath = "//table[@class='table']//th[5]")
+    private WebElement titleHeaderTableChange;
+
+    @FindBy(xpath = "//table[@class='table']//th[6]")
+    private WebElement titleHeaderTableDelete;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -102,112 +108,112 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public HomePage clickButtonUsers(){
+    public HomePage clickButtonUsers() {
         buttonUsers.click();
         return this;
     }
 
-    public HomePage clickButtonLogin(){
+    public HomePage clickButtonLogin() {
         buttonLogin.click();
         return this;
     }
 
-    public HomePage clickButtonView(){
+    public HomePage clickButtonView() {
         buttonView.click();
         return this;
     }
 
-    public HomePage getFormTitleUsers() {
-        formTitleUsers.getText();
-        return this;
+    public String getFormTitleUsers() {
+        return formTitleUsers.getText();
     }
 
-    public HomePage getTitleDateOfChange() {
-        titleDateOfChange.getText();
-        return this;
+    public String getTitleDateOfChange() {
+        return titleDateOfChange.getText();
     }
 
-    public HomePage getTitleSearchString() {
-        titleSearchString.getText();
-        return this;
+    public String getTitleSearchString() {
+        return titleSearchString.getText();
     }
 
-    public HomePage getTitleResetFilter() {
-        titleResetFilter.getText();
-        return this;
+    public String getTitleResetFilter() {
+        return titleResetFilter.getText();
     }
 
-    public HomePage getFillEmailUser() {
-       fillEmailUser.getText();
-        return this;
+    public String getTitleButtonUsers() {
+        return buttonUsers.getText();
     }
 
-    public HomePage getFillFullNameUser() {
-        fillFullNameUser.getText();
-        return this;
+    public String getTitleButtonSearch() {
+        return buttonSearch.getText();
     }
 
-    public HomePage getFillAuthorUser() {
-        fillAuthorUser.getText();
-        return this;
+    public String getTitleButtonLogin() {
+        return buttonLogin.getText();
+    }
+    public String getTitleInputDateStart() {
+        return inputDateStart.getAttribute("type");
+    }
+    public String getTitleInputDateEnd() {
+        return inputDateEnd.getAttribute("type");
     }
 
-    public HomePage getFillDateOfChangeUser() {
-        fillDateOfChangeUser.getText();
-        return this;
+    public String getTitleInputSearch() {
+        return inputSearch.getAttribute("placeholder");
+    }
+    public String getTitleHeaderTableChange() {
+        return titleHeaderTableChange.getText();
     }
 
-    public HomePage getFillChangeUser() {
-        fillChangeUser.getText();
-        return this;
+    public String getTitleHeaderTableDelete() {
+        return titleHeaderTableDelete.getText();
+    }
+    public String getFillDateOfChangeUser() {
+        return fillDateOfChangeUser.getText();
     }
 
-    public HomePage getFillDeleteUser() {
-        fillDeleteUser.getText();
-        return this;
+    public String getFillChangeUser() {
+        return fillChangeUser.getText();
     }
 
-    public HomePage getTitleDateFrom() {
-        titleDateFrom.getText();
-        return this;
+    public String getFillDeleteUser() {
+        return fillDeleteUser.getText();
     }
 
-    public HomePage getTitleDateTill() {
-        titleDateTill.getText();
-        return this;
+    public String getTitleDateFrom() {
+        return titleDateFrom.getText();
     }
 
-    public HomePage getTitleHeaderTableEmail() {
-        titleHeaderTableEmail.getText();
-        return this;
+    public String getTitleDateTill() {
+        return titleDateTill.getText();
     }
 
-    public HomePage getTitleHeaderTableFullName() {
-        titleHeaderTableFullName.getText();
-        return this;
+    public String getTitleHeaderTableEmail() {
+        return titleHeaderTableEmail.getText();
     }
 
-    public HomePage getTitleHeaderTableAuthor() {
-        titleHeaderTableAuthor.getText();
-        return this;
+    public String getTitleHeaderTableFullName() {
+        return titleHeaderTableFullName.getText();
     }
 
-    public HomePage getTitleHeaderTableDateOfChange() {
-        titleHeaderTableDateOfChange.getText();
-        return this;
+    public String getTitleHeaderTableAuthor() {
+        return titleHeaderTableAuthor.getText();
     }
 
-    public HomePage clickSortDateOfChangeAscent(){
+    public String getTitleHeaderTableDateOfChange() {
+        return titleHeaderTableDateOfChange.getText();
+    }
+
+    public HomePage clickSortDateOfChangeAscent() {
         sortDateOfChangeAscent.click();
         return this;
     }
 
-    public HomePage clickSortDateOfChangeDescend(){
+    public HomePage clickSortDateOfChangeDescend() {
         sortDateOfChangeDescend.click();
         return this;
     }
 
-    public HomePage clickTypePaginationNext(){
+    public HomePage clickTypePaginationNext() {
         typePaginationNext.click();
         return this;
     }

@@ -33,6 +33,19 @@ public class AuthorizedUserHomePage extends AbstractPage{
     @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Выход']")
     private WebElement buttonLogOutAccount;
 
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div[2]/form/table/tbody/tr[1]/td[2]/input")
+    private WebElement inputNameRegistration;
+
+    @FindBy(xpath = "//input[@name='email']")
+    private WebElement inputEmailRegistration;
+
+    @FindBy(xpath = "//form[@action='/user/register/index.html']//input[@name='password']")
+    private WebElement inputPasswordRegistration;
+
+    @FindBy(xpath = "//input[@name='act_register_now']")
+    private WebElement clickButtonRegistration;
+
+
     public AuthorizedUserHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -42,6 +55,27 @@ public class AuthorizedUserHomePage extends AbstractPage{
         driver.get(BASE_URL);
         return this;
     }
+
+    public AuthorizedUserHomePage inputNameRegistration(String name) {
+        inputNameRegistration.sendKeys(name);
+        return this;
+    }
+
+    public AuthorizedUserHomePage inputEmailRegistration(String email) {
+        inputEmailRegistration.sendKeys(email);
+        return this;
+    }
+
+    public AuthorizedUserHomePage inputPasswordRegistration(String password) {
+        inputPasswordRegistration.sendKeys(password);
+        return this;
+    }
+
+    public AuthorizedUserHomePage clickButtonRegistration() {
+        clickButtonRegistration.click();
+        return this;
+    }
+
 
     //необходимо добавить PageObject UsersPage
     /*public UsersPage clickButtonUsers(){
@@ -54,9 +88,9 @@ public class AuthorizedUserHomePage extends AbstractPage{
         return new TasksPage(driver);
     }
 
-    public CompaniesPage clickButtonCompanies(){
+    public AuthorizedUserHomePage clickButtonCompanies(){
         buttonCompanies.click();
-        return new CompaniesPage(driver);
+        return new AuthorizedUserHomePage(driver);
     }
 
     //необходимо добавить PageObject NotificationsPage
@@ -75,15 +109,23 @@ public class AuthorizedUserHomePage extends AbstractPage{
         return dropdownMenuUserAccount.getText();
     }
 
-    public UserProfilePage openUserProfilePage(){
+    public AuthorizedUserHomePage openUserProfilePage(){
         dropdownMenuUserAccount.click();
         buttonUserAccount.click();
-        return new UserProfilePage(driver);
+        return new AuthorizedUserHomePage(driver);
     }
 
-    public HomePage logOutAuthorizedUserPage(){
+    public AuthorizedUserHomePage logOutAuthorizedUserPage(){
         dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
-        return new HomePage(driver);
+        return new AuthorizedUserHomePage(driver);
+    }
+
+    public AuthorizedUserHomePage fillFormRegistration(String name, String email, String password){
+        inputNameRegistration(name);
+        inputEmailRegistration(email);
+        inputPasswordRegistration(password);
+        clickButtonRegistration.click();
+        return new AuthorizedUserHomePage(driver);
     }
 }
