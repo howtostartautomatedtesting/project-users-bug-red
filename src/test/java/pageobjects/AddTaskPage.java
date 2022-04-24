@@ -66,10 +66,10 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-   /* public TasksPage clickButtonAddTask() {
+    public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
-    } */
+    }
 
     public AddTaskPage fillFormTaskAdd(String name, String description, String responsible) {
         fillName(name);
@@ -78,12 +78,12 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-  /*  public TasksPage createNewTask(String name, String description, String responsible) {
+    public TasksPage fillFormTaskAddClickButtonAdd(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
-}*/
+}
 
 }
