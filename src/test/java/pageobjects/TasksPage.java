@@ -23,6 +23,9 @@ public class TasksPage extends AbstractPage{
     @FindBy(xpath = "//a[@href='/tasks/add.html']")
     private WebElement buttonAddTask;
 
+    @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
+    private WebElement buttonChangeTask;
+
     public TasksPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -54,6 +57,11 @@ public class TasksPage extends AbstractPage{
         return new AddTaskPage(driver);
     }
 
+    public EditTaskPage clickButtonChangeTask() {
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
+    }
+
     public String getTaskName(String taskName){
         WebElement taskNameInTable = driver.findElement(By.xpath(getTaskNameXPath(taskName)));
         return taskNameInTable.getText();
@@ -80,12 +88,12 @@ public class TasksPage extends AbstractPage{
         return this;
     }
 
-    //необходимо добавить PageObject EditTaskPage
-    /*public EditTaskPage editTask(String taskName){
+
+    public EditTaskPage editTask(String taskName){
         WebElement buttonEditTask = driver.findElement(By.xpath(getButtonEditTaskXPath(taskName)));
         buttonEditTask.click();
         return new EditTaskPage(driver);
-    }*/
+    }
 
     //необходимо добавить PageObject AddTaskToSchedulePage
     /*public AddTaskToSchedulePage addTaskToSchedule(String taskName){

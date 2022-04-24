@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.spec.ECGenParameterSpec;
+
 public class EditTaskPage extends AbstractPage {
     private WebDriver driver;
 
@@ -59,11 +61,6 @@ public class EditTaskPage extends AbstractPage {
         return buttonAddNewTask.getText();
     }
 
-    public EditTaskPage getButtonChangeTask(){
-        buttonChangeTask.click();
-        return new EditTaskPage(driver);
-    }
-
     public EditTaskPage fillDescription(String description) {
         inputDescription.clear();
         inputDescription.sendKeys(description);
@@ -75,10 +72,6 @@ public class EditTaskPage extends AbstractPage {
         dropBoxResponsible.sendKeys(responsible, Keys.ENTER);
         return this;
     }
-    /* public TasksPage clickChangeTask() {
-        buttonChangeTask.click();
-        return new TasksPage(driver);
-    } */
 
     public EditTaskPage fillFormEditTask(String name, String description, String responsible) {
         fillName(name);
@@ -87,13 +80,12 @@ public class EditTaskPage extends AbstractPage {
         return this;
     }
 
-   /* public TasksPage createEditTask(String name, String description, String responsible) {
+    public EditTaskPage fillFormEditTaskAndClickButton(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
-        clickChangeTask();
-        return new TasksPage(driver);
-    }*/
-
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
+    }
 }
 
