@@ -14,7 +14,7 @@ public class EditTaskPageTest extends AbstractTest{
 
         EditTaskPage editTaskPage = new UserLoginPage(driver).openPage()
                 .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
-                .clickButtonTasks().addNewTask().createNewTask(name,description,responsible).clickButtonChangeTask();
+                .clickButtonTasks().addNewTask().fillFormTaskAddClickButtonAdd(name,description,responsible).clickButtonChangeTask();
 
         Assert.assertEquals(editTaskPage.getHeadingEditTaskText(), EditTaskPageUITitles.EXPECTED_PAGE_EDIT_HEADING_TITLE);
         Assert.assertEquals(editTaskPage.getLabelNameText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_NAME_TITLE);
