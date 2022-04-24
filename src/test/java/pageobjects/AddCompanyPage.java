@@ -1,16 +1,15 @@
 package pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.security.SecureRandom;
-
 public class AddCompanyPage extends AbstractPage {
     private WebDriver driver;
-    private final String ADD_PAGE_COMPANY = BASE_URL + "/companys/add.html";
+    public static final String ADD_PAGE_COMPANY_URL = BASE_URL + "/companys/add.html";
 
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputName;
@@ -33,15 +32,15 @@ public class AddCompanyPage extends AbstractPage {
     @FindBy(xpath = "//a[@class='clear_field']")
     private WebElement buttonClearField;
     @FindBy(xpath = "//input[@type='submit' ]")
-    private WebElement ButtonAddCompany;
+    private WebElement buttonAddCompany;
 
     public AddCompanyPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public AddCompanyPage AddNewCompanyPage() {
-        driver.get(ADD_PAGE_COMPANY);
+    public AddCompanyPage addNewCompanyPage() {
+        driver.get(ADD_PAGE_COMPANY_URL);
         return this;
     }
 
@@ -88,13 +87,12 @@ public class AddCompanyPage extends AbstractPage {
 
     public AddCompanyPage chooseEmployees(String user) {
         buttonClearField.click();
-        selectEmployees.sendKeys(user);
-        selectEmployees.sendKeys(Keys.ENTER);
+        selectEmployees.sendKeys(user + Keys.ENTER);
         return this;
     }
 
     public AddCompanyPage clickAddCompany() {
-        ButtonAddCompany.click();
+        buttonAddCompany.click();
         return this;
     }
 
@@ -121,5 +119,50 @@ public class AddCompanyPage extends AbstractPage {
         chooseEmployees(user);
         clickAddCompany();
         return this;
+    }
+
+    private String getFieldTitleXPathByNameAttribute(String valueOfAttributeName){
+        String defaultNameLocator = "//*[@name='%s']/../preceding-sibling::td";
+        return String.format(defaultNameLocator, valueOfAttributeName);
+    }
+
+    public String getFieldNameTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("name"))).getText();
+    }
+
+    public String getFieldTypeTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("type"))).getText();
+    }
+
+    public String getFieldINNTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("inn"))).getText();
+    }
+
+    public String getFieldOGRNTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("ogrn"))).getText();
+    }
+
+    public String getFieldKPPTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("kpp"))).getText();
+    }
+
+    public String getFieldPhoneTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("phone"))).getText();
+    }
+
+    public String getFieldAddressTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("adress"))).getText();
+    }
+
+    public String getFieldUsersTitle(){
+        return driver.findElement(By.xpath(getFieldTitleXPathByNameAttribute("users[]"))).getText();
+    }
+
+    public String getButtonClearFieldUsersName(){
+        return buttonClearField.getText();
+    }
+
+    public String getButtonAddCompanyName(){
+        return buttonAddCompany.getAttribute("value");
     }
 }
