@@ -70,7 +70,6 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-
     public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
@@ -83,7 +82,7 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-   public TasksPage createNewTask(String name, String description, String responsible) {
+    public TasksPage fillFormTaskAddClickButtonAdd(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
