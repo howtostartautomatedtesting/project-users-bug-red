@@ -30,7 +30,6 @@ public class EditTaskPageTest extends AbstractTest {
                 .clickButtonTasks().addNewTask()
                 .fillFormTaskAddClickButtonAdd(TASK_NAME, DESCRIPTION_TASK, RESPONSIBLE)
                 .editTask(TASK_NAME);
-
     }
 
     @Test(groups = "authorizedUserEditPage")
@@ -56,8 +55,5 @@ public class EditTaskPageTest extends AbstractTest {
         assertEquals(editTaskPage.emptyInputDescriptionTip(), EXPECTED_EMPTY_INPUT_TIP); // для RUS локали
         // assertEquals(editTaskPage.emptyInputDescriptionTip(),EXPECTED_EMPTY_INPUT_TIP_ENG); // для ENG локали
         //на сайте меняется язык подсказок
-
     }
-
-
 }
