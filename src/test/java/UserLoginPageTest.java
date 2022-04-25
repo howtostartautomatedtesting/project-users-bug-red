@@ -70,5 +70,4 @@ public class UserLoginPageTest extends AbstractTest {
                 .fillFormLoginAndClickButtonAuthorization(" ", " ");
         assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
     }
-
 }
