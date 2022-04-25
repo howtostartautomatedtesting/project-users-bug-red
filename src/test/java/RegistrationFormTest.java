@@ -13,4 +13,12 @@ public class RegistrationFormTest extends AbstractTest {
 
         Thread.sleep(3000);
     }
+
+    @Test
+    public void testRegistrationWithEmptyEmail(){
+        userLoginPage = new UserLoginPage(driver).openPage();
+        userLoginPage.fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(),"", UserCreator.getPassword());
+        userLoginPage.clickButtonRegistration();
+    }
+    
 }
