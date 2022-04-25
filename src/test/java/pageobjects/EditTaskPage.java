@@ -52,6 +52,12 @@ public class EditTaskPage extends AbstractPage {
         inputName.sendKeys(name);
         return this;
     }
+    public String emptyInputNameTip(){
+       return inputName.getAttribute("validationMessage");
+    }
+    public String emptyInputDescriptionTip(){
+        return inputDescription.getAttribute("validationMessage");
+    }
 
     public EditTaskPage fillDescription(String description) {
         inputDescription.clear();
@@ -64,10 +70,11 @@ public class EditTaskPage extends AbstractPage {
         dropBoxResponsible.sendKeys(responsible, Keys.ENTER);
         return this;
     }
-    /* public TasksPage clickChangeTask() {
+
+    public TasksPage clickChangeTask() {
         buttonChangeTask.click();
         return new TasksPage(driver);
-    } */
+    }
 
     public EditTaskPage fillFormEditTask(String name, String description, String responsible) {
         fillName(name);
@@ -76,13 +83,20 @@ public class EditTaskPage extends AbstractPage {
         return this;
     }
 
-   /* public TasksPage createEditTask(String name, String description, String responsible) {
+    public TasksPage fillFormEditTaskClickChangeTask(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
         clickChangeTask();
         return new TasksPage(driver);
-    }*/
+    }
+    public EditTaskPage fillFormEmptyInputEditTaskClickChangeTask(String name, String description, String responsible) {
+        fillName(name);
+        fillDescription(description);
+        fillResponsible(responsible);
+        clickChangeTask();
+        return this;
+    }
 
 }
 
