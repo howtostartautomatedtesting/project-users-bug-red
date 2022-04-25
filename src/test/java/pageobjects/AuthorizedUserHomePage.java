@@ -41,7 +41,7 @@ public class AuthorizedUserHomePage extends AbstractPage {
         return buttonUsers.getText();
     }
 
-    public String getButtonTasks() {
+    public String getButtonTasksName() {
         return buttonTasks.getText();
     }
 
@@ -49,21 +49,16 @@ public class AuthorizedUserHomePage extends AbstractPage {
         return buttonCompanies.getText();
     }
 
-    public String getButtonNotifications() {
+    public String getButtonNotificationsName() {
         return buttonNotifications.getText();
     }
 
-    public String getButtonUserTasks() {
+    public String getButtonUserTasksName() {
         return buttonUserTasks.getText();
     }
 
-    public String getDropdownMenuUserAccount() {
+    public String getDropdownMenuUserAccountName() {
         return dropdownMenuUserAccount.getText();
-    }
-
-    public TasksPage clickButtonTask() {
-        buttonTasks.click();
-        return new TasksPage(driver);
     }
 
     public TasksPage clickButtonTasks() {
@@ -74,10 +69,6 @@ public class AuthorizedUserHomePage extends AbstractPage {
     public CompaniesPage clickButtonCompanies() {
         buttonCompanies.click();
         return new CompaniesPage(driver);
-    }
-
-    public String getAuthorizedUserName() {
-        return dropdownMenuUserAccount.getText();
     }
 
     public UserProfilePage openUserProfilePage() {
