@@ -22,10 +22,10 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
         Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), "Пользователи");
-        Assert.assertEquals(authorizedUserHomePage.getButtonTasks(), "Задачи");
+        Assert.assertEquals(authorizedUserHomePage.getButtonTasksName(), "Задачи");
         Assert.assertEquals(authorizedUserHomePage.getButtonCompanies(), "Компании");
-        Assert.assertEquals(authorizedUserHomePage.getButtonNotifications(), " 6");
-        Assert.assertEquals(authorizedUserHomePage.getButtonUserTasks(), "0 заданий");
-        Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccount(), "Ирусик");
+        Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), " 6");
+        Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), "0 заданий");
+        Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), "Ирусик");
     }
 }
