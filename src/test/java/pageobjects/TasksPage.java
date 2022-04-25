@@ -23,6 +23,8 @@ public class TasksPage extends AbstractPage{
     @FindBy(xpath = "//a[@href='/tasks/add.html']")
     private WebElement buttonAddTask;
 
+    @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
+    private WebElement buttonChangeTask;
 
     @FindBy(xpath = "//div[@class=\"notifications bottom-right\"]")
     private WebElement tooltip;
@@ -60,6 +62,11 @@ public class TasksPage extends AbstractPage{
     public AddTaskPage addNewTask(){
         buttonAddTask.click();
         return new AddTaskPage(driver);
+    }
+
+    public EditTaskPage clickButtonChangeTask() {
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
     }
 
     public String getTaskName(String taskName){

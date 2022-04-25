@@ -34,10 +34,6 @@ public class AddTaskPage extends AbstractPage {
     @FindBy(xpath = "//form[@action='/tasks/do']//input[@value='Добавить задачу']")
     private WebElement buttonAddTask;
 
-    public String getButtonAddTaskPageText() {
-        return buttonAddTask.getText();
-    }
-
     public String getHeadingAddTaskText() {
         return headingAddTask.getText();
     }
@@ -88,6 +84,7 @@ public class AddTaskPage extends AbstractPage {
         fillResponsible(responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
-}
+    }
 
 }
+
