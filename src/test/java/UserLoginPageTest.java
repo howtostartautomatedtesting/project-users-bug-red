@@ -44,7 +44,7 @@ public class UserLoginPageTest extends AbstractTest {
         AuthorizedUserHomePage authorizedUserHomePage = new HomePage(driver).openPage()
                 .clickButtonLogin()
                 .fillFormLoginAndClickButtonAuthorization(authorizedUserMail, authorizedUserPassword);
-        assertEquals(authorizedUserHomePage.getAuthorizedUserName(), authorizedUserName.toLowerCase());
+        assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), authorizedUserName.toLowerCase());
     }
 
     @Test(groups = "authorizedUser")
@@ -70,5 +70,4 @@ public class UserLoginPageTest extends AbstractTest {
                 .fillFormLoginAndClickButtonAuthorization(" ", " ");
         assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
     }
-
 }
