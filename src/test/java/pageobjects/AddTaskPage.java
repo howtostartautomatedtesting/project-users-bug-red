@@ -8,8 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddTaskPage extends AbstractPage {
     private WebDriver driver;
+    public static final String ADD_TASK_PAGE_URL = BASE_URL + "/tasks/add.html";
 
-    AddTaskPage(WebDriver driver) {
+    public AddTaskPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -30,9 +31,12 @@ public class AddTaskPage extends AbstractPage {
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement inputResponsible;
-    @FindBy(xpath = "//input[@type='submit']")
+    @FindBy(xpath = "//form[@action='/tasks/do']//input[@value='Добавить задачу']")
     private WebElement buttonAddTask;
 
+    public String getButtonAddTaskPageText() {
+        return buttonAddTask.getText();
+    }
 
     public String getHeadingAddTaskText() {
         return headingAddTask.getText();
