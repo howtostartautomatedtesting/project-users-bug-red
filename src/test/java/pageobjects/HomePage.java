@@ -113,9 +113,9 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public HomePage clickButtonLogin() {
+    public UserLoginPage clickButtonLogin() {
         buttonLogin.click();
-        return this;
+        return new UserLoginPage(driver);
     }
 
     public HomePage clickButtonView() {

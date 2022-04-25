@@ -23,4 +23,3 @@ public class EditTaskPageTest extends AbstractTest{
         Assert.assertEquals(editTaskPage.getButtonEditTaskPageText(), EditTaskPageUITitles.EXPECTED_BUTTON_AND_EDIT_TASK_TITLE);
     }
 }
-

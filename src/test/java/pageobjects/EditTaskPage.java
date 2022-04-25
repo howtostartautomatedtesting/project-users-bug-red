@@ -56,6 +56,12 @@ public class EditTaskPage extends AbstractPage {
         inputName.sendKeys(name);
         return this;
     }
+    public String emptyInputNameTip(){
+       return inputName.getAttribute("validationMessage");
+    }
+    public String emptyInputDescriptionTip(){
+        return inputDescription.getAttribute("validationMessage");
+    }
 
     public String getButtonEditTaskPageText() {
         return buttonAddNewTask.getText();
@@ -87,5 +93,6 @@ public class EditTaskPage extends AbstractPage {
         buttonChangeTask.click();
         return new EditTaskPage(driver);
     }
+
 }
 

@@ -66,7 +66,6 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-
     public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
@@ -86,4 +85,6 @@ public class AddTaskPage extends AbstractPage {
         clickButtonAddTask();
         return new TasksPage(driver);
     }
+
 }
+

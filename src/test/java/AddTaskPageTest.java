@@ -11,6 +11,7 @@ public class AddTaskPageTest extends AbstractTest {
     public void testUIAddTaskPage() {
 
         AddTaskPage addTaskPage = new UserLoginPage(driver).openPage()
+
                 .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
                 .clickButtonTasks().addNewTask();
 
@@ -18,5 +19,6 @@ public class AddTaskPageTest extends AbstractTest {
         Assert.assertEquals(addTaskPage.getLabelNameText(), AddTaskPageUITitles.EXPECTED_PAGE_ADD_TASK_NAME_TITLE);
         Assert.assertEquals(addTaskPage.getLabelResponsibleText(), AddTaskPageUITitles.EXPECTED_PAGE_ADD_RESPONSIBLE_TITLE);
         Assert.assertEquals(addTaskPage.getLabelDescriptionText(), AddTaskPageUITitles.EXPECTED_PAGE_ADD_TASK_DESCRIPTION_TITLE);
+
     }
 }
