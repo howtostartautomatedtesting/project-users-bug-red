@@ -88,6 +88,7 @@ public class AddTaskPage extends AbstractPage {
         fillResponsible(responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
-}
+    }
 
 }
+
