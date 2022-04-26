@@ -11,7 +11,6 @@ public class AddTaskPageTest extends AbstractTest {
     public void testUIAddTaskPage() {
 
         AddTaskPage addTaskPage = new UserLoginPage(driver).openPage()
-
                 .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
                 .clickButtonTasks().addNewTask();
 
