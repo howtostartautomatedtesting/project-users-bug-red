@@ -38,8 +38,9 @@ public class AddTaskPage extends AbstractPage {
         return buttonAddTask.getText();
     }
 
-    public String getButtonAddTask() {
-        return buttonAuthorization.getAttribute("value");
+    public EditTaskPage getButtonAddTaskPage() {
+        buttonAddTask.click();
+        return new EditTaskPage(driver);
     }
 
     public String getHeadingAddTaskText() {
@@ -74,6 +75,7 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
+
     public TasksPage clickButtonAddTask() {
         buttonAddTask.click();
         return new TasksPage(driver);
@@ -86,13 +88,11 @@ public class AddTaskPage extends AbstractPage {
         return this;
     }
 
-    public TasksPage fillFormTaskAddClickButtonAdd(String name, String description, String responsible) {
+    public EditTaskPage createNewTask(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
         clickButtonAddTask();
-        return new TasksPage(driver);
+        return new EditTaskPage(driver);
     }
-
 }
-

@@ -98,6 +98,12 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//ul[@class='pagination']/li[@class='next']")
     private WebElement typePaginationNext;
 
+    @FindBy(xpath = "//table[@class='table']//th[5]")
+    private WebElement titleHeaderTableChange;
+
+    @FindBy(xpath = "//table[@class='table']//th[6]")
+    private WebElement titleHeaderTableDelete;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -127,6 +133,18 @@ public class HomePage extends AbstractPage {
         return formTitleUsers.getText();
     }
 
+
+    public String getTitleDateOfChange() {
+        return titleDateOfChange.getText();
+    }
+
+    public String getTitleSearchString() {
+        return titleSearchString.getText();
+    }
+
+    public String getTitleResetFilter() {
+        return titleResetFilter.getText();
+
     public String getTitleInputDateStart() {
         return inputDateStart.getAttribute("type");
     }
@@ -149,6 +167,52 @@ public class HomePage extends AbstractPage {
 
     public String getTitleButtonLogin() {
         return buttonLogin.getText();
+      
+    }
+    public String getTitleInputDateStart() {
+        return inputDateStart.getAttribute("type");
+    }
+    public String getTitleInputDateEnd() {
+        return inputDateEnd.getAttribute("type");
+    }
+
+    public String getTitleInputSearch() {
+        return inputSearch.getAttribute("placeholder");
+    }
+    public String getTitleHeaderTableChange() {
+        return titleHeaderTableChange.getText();
+    }
+
+    public String getTitleHeaderTableDelete() {
+        return titleHeaderTableDelete.getText();
+    }
+      
+    public String getFillDateOfChangeUser() {
+        return fillDateOfChangeUser.getText();
+    }
+
+    public String getFillChangeUser() {
+        return fillChangeUser.getText();
+    }
+
+    public String getFillDeleteUser() {
+        return fillDeleteUser.getText();
+    }
+
+    public String getTitleDateFrom() {
+        return titleDateFrom.getText();
+    }
+
+    public String getTitleDateTill() {
+        return titleDateTill.getText();
+    }
+
+    public String getTitleHeaderTableEmail() {
+        return titleHeaderTableEmail.getText();
+    }
+
+    public String getTitleHeaderTableFullName() {
+        return titleHeaderTableFullName.getText();
     }
 
     public String getTitleDateOfChange() {
@@ -202,7 +266,7 @@ public class HomePage extends AbstractPage {
     public String getTitleHeaderTableFullName() {
         return titleHeaderTableFullName.getText();
     }
-
+      
     public String getTitleHeaderTableAuthor() {
         return titleHeaderTableAuthor.getText();
     }
