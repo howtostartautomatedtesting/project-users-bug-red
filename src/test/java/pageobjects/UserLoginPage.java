@@ -132,18 +132,18 @@ public class UserLoginPage extends AbstractPage {
         return buttonRegistration.getAttribute("value");
     }
 
-    public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password){
+    public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password) {
         inputEmailLogin(email);
         inputPasswordLogin(password);
-        buttonAuthorization.click();
+        clickButtonAuthorization.click();
         return new AuthorizedUserHomePage(driver);
     }
     
-    public AuthorizedUserHomePage fillFormRegistrationAndClickButtonRegistration(String name, String email, String password) {
+    public AuthorizedUserHomePage fillFormRegistrationAndClickButtonRegistration(String name, String email, String password){
         inputNameRegistration(name);
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
-        buttonRegistration.click();
+        clickButtonRegistration.click();
         return new AuthorizedUserHomePage(driver);
     }
 }

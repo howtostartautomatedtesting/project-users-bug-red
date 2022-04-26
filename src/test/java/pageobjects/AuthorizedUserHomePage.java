@@ -5,11 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AuthorizedUserHomePage extends AbstractPage{
-
+public class AuthorizedUserHomePage extends AbstractPage {
     private WebDriver driver;
 
-    @FindBy(xpath = "//div[@id='main-menu']//*[text()='Пользователи']/parent::a")
+    @FindBy(xpath = "//div[@id='main-menu']//a[@href='/']")
     private WebElement buttonUsers;
 
     @FindBy(xpath = "//div[@id='main-menu']//a[@href='/tasks/index.html']")
@@ -24,13 +23,13 @@ public class AuthorizedUserHomePage extends AbstractPage{
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/my/index.html']")
     private WebElement buttonUserTasks;
 
-    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//li[@id='fat-menu']/a")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@class='dropdown-toggle']")
     private WebElement dropdownMenuUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Личный кабинет']")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/profile/index.html']")
     private WebElement buttonUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Выход']")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/logout.html']")
     private WebElement buttonLogOutAccount;
 
     public AuthorizedUserHomePage(WebDriver driver) {
@@ -38,50 +37,47 @@ public class AuthorizedUserHomePage extends AbstractPage{
         PageFactory.initElements(driver, this);
     }
 
-    public AuthorizedUserHomePage openPage() {
-        driver.get(BASE_URL);
-        return this;
+    public String getButtonUsers() {
+        return buttonUsers.getText();
     }
 
-    //необходимо добавить PageObject UsersPage
-    /*public UsersPage clickButtonUsers(){
-        buttonUsers.click();
-        return new UsersPage(driver);
-    }*/
+    public String getButtonTasksName() {
+        return buttonTasks.getText();
+    }
 
-    public TasksPage clickButtonTasks(){
+    public String getButtonCompanies() {
+        return buttonCompanies.getText();
+    }
+
+    public String getButtonNotificationsName() {
+        return buttonNotifications.getText();
+    }
+
+    public String getButtonUserTasksName() {
+        return buttonUserTasks.getText();
+    }
+
+    public String getDropdownMenuUserAccountName() {
+        return dropdownMenuUserAccount.getText();
+    }
+
+    public TasksPage clickButtonTasks() {
         buttonTasks.click();
         return new TasksPage(driver);
     }
 
-    public CompaniesPage clickButtonCompanies(){
+    public CompaniesPage clickButtonCompanies() {
         buttonCompanies.click();
         return new CompaniesPage(driver);
     }
 
-    //необходимо добавить PageObject NotificationsPage
-    /*public NotificationsPage clickButtonNotifications(){
-        buttonNotifications.click();
-        return new NotificationsPage(driver);
-    }*/
-
-    //необходимо добавить PageObject UserTasksPage
-    /*public UserTasksPage clickButtonUserTasks(){
-        buttonUserTasks.click();
-        return new UserTasksPage(driver);
-    }*/
-
-    public String getAuthorizedUserName(){
-        return dropdownMenuUserAccount.getText();
-    }
-
-    public UserProfilePage openUserProfilePage(){
+    public UserProfilePage openUserProfilePage() {
         dropdownMenuUserAccount.click();
         buttonUserAccount.click();
         return new UserProfilePage(driver);
     }
 
-    public HomePage logOutAuthorizedUserPage(){
+    public HomePage logOutAuthorizedUserPage() {
         dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
         return new HomePage(driver);

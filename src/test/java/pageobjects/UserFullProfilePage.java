@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserFullProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/668315";
     private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
 
     public UserFullProfilePage(WebDriver driver) {
@@ -280,7 +279,4 @@ public class UserFullProfilePage extends AbstractPage {
     public String getInputAddress() {
         return inputAddress.getText();
     }
-
-
 }
-

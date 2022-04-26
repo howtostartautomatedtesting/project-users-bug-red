@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class UserProfilePage extends AbstractPage {
     private WebDriver driver;
-    private final String USER_PROFILE_PAGE_URL = BASE_URL + "/user/profile/index.html";
+    public static final String USER_PROFILE_PAGE_URL = BASE_URL + "/user/profile/index.html";
 
     public UserProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -52,6 +52,9 @@ public class UserProfilePage extends AbstractPage {
     private WebElement inputINN;
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement buttonSave;
+
+    @FindBy(xpath = "//a[@class='btn btn-danger']")
+    private WebElement buttonFullProfile;
 
     public UserProfilePage openUsersPage() {
         driver.get(USER_PROFILE_PAGE_URL);
@@ -159,6 +162,11 @@ public class UserProfilePage extends AbstractPage {
         typeHobby(hobby);
         typeINN(inn);
         clickButtonSave();
+        return new UserProfilePage(driver);
+    }
+
+    public UserProfilePage clickButtonFullProfile(){
+        buttonFullProfile.click();
         return new UserProfilePage(driver);
     }
 }
