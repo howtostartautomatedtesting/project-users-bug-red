@@ -1,59 +1,25 @@
-import org.testng.annotations.BeforeGroups;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.EditTaskPage;
-import pageobjects.TasksPage;
 import pageobjects.UserLoginPage;
+import uiTitles.EditTaskPageUITitles;
 import utils.UserCreator;
 
-import static org.testng.Assert.assertEquals;
+public class EditTaskPageTest extends AbstractTest{
+    @Test
+    public void testUIEditTaskPage() {
+        String name="Task";
+        String description = "New";
+        String responsible = "Raman";
 
-public class EditTaskPageTest extends AbstractTest {
-
-    private EditTaskPage editTaskPage;
-
-    public static final String TASK_NAME = "Task";
-    public static final String DESCRIPTION_TASK = "Description task";
-    public static final String RESPONSIBLE = "1";
-    public static final String NEW_TASK_NAME = "Task1";
-    public static final String NEW_DESCRIPTION_TASK = "New description";
-    public static final String NEW_RESPONSIBLE = "2";
-    public static final String EXPECTED_PAGE_TITLE = "Задачи";
-    public static final String EXPECTED_TOOLTIP_TITLE = "Задача успешно обновлена";
-    public static final String EXPECTED_EMPTY_INPUT_TIP = "Заполните это поле.";
-    public static final String EXPECTED_EMPTY_INPUT_TIP_ENG = "Please fill out this field.";
-
-
-    @BeforeGroups("authorizedUserEditPage")
-    public void registrationToAccountPreconditions() {
-        editTaskPage = new UserLoginPage(driver).openPage()
+        EditTaskPage editTaskPage = new UserLoginPage(driver).openPage()
                 .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
-                .clickButtonTasks().addNewTask()
-                .fillFormTaskAddClickButtonAdd(TASK_NAME, DESCRIPTION_TASK, RESPONSIBLE)
-                .editTask(TASK_NAME);
-    }
+                .clickButtonTasks().addNewTask().fillFormTaskAddClickButtonAdd(name,description,responsible).clickButtonChangeTask();
 
-    @Test(groups = "authorizedUserEditPage")
-    public void tetEditTaskWithValidData() {
-        TasksPage tasksPage = editTaskPage.fillFormEditTaskClickChangeTask(NEW_TASK_NAME, NEW_DESCRIPTION_TASK, NEW_RESPONSIBLE);
-        assertEquals(tasksPage.getPageTitle(), EXPECTED_PAGE_TITLE);
-        assertEquals(tasksPage.getTaskName(NEW_TASK_NAME), NEW_TASK_NAME);
-        assertEquals(tasksPage.getTooltipTitle(), EXPECTED_TOOLTIP_TITLE);
-    }
-
-    @Test(groups = "authorizedUserEditPage")
-    public void tetEditTaskWithEmptyFieldTaskName() {
-        editTaskPage = editTaskPage.fillFormEmptyInputEditTaskClickChangeTask("", NEW_DESCRIPTION_TASK, NEW_RESPONSIBLE);
-        System.out.println(editTaskPage.emptyInputNameTip());
-        assertEquals(editTaskPage.emptyInputNameTip(), EXPECTED_EMPTY_INPUT_TIP); // для RUS локали
-        //assertEquals(editTaskPage.emptyInputNameTip(),EXPECTED_EMPTY_INPUT_TIP_ENG); // для ENG локали
-        //на сайте меняется язык подсказок
-    }
-
-    @Test(groups = "authorizedUserEditPage")
-    public void tetEditTaskWithEmptyFieldTaskDescription() {
-        editTaskPage = editTaskPage.fillFormEmptyInputEditTaskClickChangeTask(NEW_TASK_NAME, "", NEW_RESPONSIBLE);
-        assertEquals(editTaskPage.emptyInputDescriptionTip(), EXPECTED_EMPTY_INPUT_TIP); // для RUS локали
-        // assertEquals(editTaskPage.emptyInputDescriptionTip(),EXPECTED_EMPTY_INPUT_TIP_ENG); // для ENG локали
-        //на сайте меняется язык подсказок
+        Assert.assertEquals(editTaskPage.getHeadingEditTaskText(), EditTaskPageUITitles.EXPECTED_PAGE_EDIT_HEADING_TITLE);
+        Assert.assertEquals(editTaskPage.getLabelNameText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_NAME_TITLE);
+        Assert.assertEquals(editTaskPage.getLabelDescriptionText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_DESCRIPTION_TITLE);
+        Assert.assertEquals(editTaskPage.getLabelResponsibleText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_RESPONSIBLE_TITLE);
+        Assert.assertEquals(editTaskPage.getButtonEditTaskPageText(), EditTaskPageUITitles.EXPECTED_BUTTON_AND_EDIT_TASK_TITLE);
     }
 }
