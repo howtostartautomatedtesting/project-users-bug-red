@@ -67,6 +67,11 @@ public class EditTaskPage extends AbstractPage {
         return buttonAddNewTask.getText();
     }
 
+    public EditTaskPage getButtonChangeTask(){
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
+    }
+
     public EditTaskPage fillDescription(String description) {
         inputDescription.clear();
         inputDescription.sendKeys(description);

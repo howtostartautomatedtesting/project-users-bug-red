@@ -28,6 +28,5 @@ public class HomePageTest extends AbstractTest {
         assertEquals(homePage.getTitleHeaderTableChange(), HomePageUITitles.EXPECTED_HEADER_TABLE_CHANGE_TITLE);
         assertEquals(homePage.getTitleHeaderTableDelete(), HomePageUITitles.EXPECTED_HEADER_TABLE_DELETE_TITLE);
 
-
     }
 }

@@ -127,6 +127,19 @@ public class HomePage extends AbstractPage {
         return formTitleUsers.getText();
     }
 
+
+    public String getTitleDateOfChange() {
+        return titleDateOfChange.getText();
+    }
+
+    public String getTitleSearchString() {
+        return titleSearchString.getText();
+    }
+
+    public String getTitleResetFilter() {
+        return titleResetFilter.getText();
+    }
+
     public String getTitleInputDateStart() {
         return inputDateStart.getAttribute("type");
     }
@@ -151,28 +164,8 @@ public class HomePage extends AbstractPage {
         return buttonLogin.getText();
     }
 
-    public String getTitleDateOfChange() {
-        return titleDateOfChange.getText();
-    }
-
-    public String getTitleSearchString() {
-        return titleSearchString.getText();
-    }
-
-    public String getTitleResetFilter() {
-        return titleResetFilter.getText();
-    }
-
-    public String getFillEmailUser() {
-        return fillEmailUser.getText();
-    }
-
-    public String getFillFullNameUser() {
-        return fillFullNameUser.getText();
-    }
-
-    public String getFillAuthorUser() {
-        return fillAuthorUser.getText();
+    public String getTitleHeaderTableChange() {
+        return titleHeaderTableChange.getText();
     }
 
     public String getFillDateOfChangeUser() {
@@ -203,16 +196,24 @@ public class HomePage extends AbstractPage {
         return titleHeaderTableFullName.getText();
     }
 
+    public String getFillEmailUser() {
+        return fillEmailUser.getText();
+    }
+
+    public String getFillFullNameUser() {
+        return fillFullNameUser.getText();
+    }
+
+    public String getFillAuthorUser() {
+        return fillAuthorUser.getText();
+    }
+
     public String getTitleHeaderTableAuthor() {
         return titleHeaderTableAuthor.getText();
     }
 
     public String getTitleHeaderTableDateOfChange() {
         return titleHeaderTableDateOfChange.getText();
-    }
-
-    public String getTitleHeaderTableChange() {
-        return titleHeaderTableChange.getText();
     }
 
     public String getTitleHeaderTableDelete() {

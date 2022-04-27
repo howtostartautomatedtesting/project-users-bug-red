@@ -5,10 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.SecureRandom;
+
 public class AuthorizedUserHomePage extends AbstractPage {
+
     private WebDriver driver;
 
-    @FindBy(xpath = "//div[@id='main-menu']//a[@href='/']")
+    @FindBy(xpath = "//div[@id='main-menu']//*[text()='Пользователи']/parent::a")
     private WebElement buttonUsers;
 
     @FindBy(xpath = "//div[@id='main-menu']//a[@href='/tasks/index.html']")
@@ -23,18 +26,55 @@ public class AuthorizedUserHomePage extends AbstractPage {
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/my/index.html']")
     private WebElement buttonUserTasks;
 
-    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@class='dropdown-toggle']")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//li[@id='fat-menu']/a")
     private WebElement dropdownMenuUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/profile/index.html']")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Личный кабинет']")
     private WebElement buttonUserAccount;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/logout.html']")
+    @FindBy(xpath = "//ul[@class='dropdown-menu']//a[text()='Выход']")
     private WebElement buttonLogOutAccount;
+
+    @FindBy(xpath = "/html/body/div[3]/div[1]/div[2]/form/table/tbody/tr[1]/td[2]/input")
+    private WebElement inputNameRegistration;
+
+    @FindBy(xpath = "//input[@name='email']")
+    private WebElement inputEmailRegistration;
+
+    @FindBy(xpath = "//form[@action='/user/register/index.html']//input[@name='password']")
+    private WebElement inputPasswordRegistration;
+
+    @FindBy(xpath = "//input[@name='act_register_now']")
+    private WebElement clickButtonRegistration;
 
     public AuthorizedUserHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public AuthorizedUserHomePage openPage() {
+        driver.get(BASE_URL);
+        return this;
+    }
+
+    public AuthorizedUserHomePage inputNameRegistration(String name) {
+        inputNameRegistration.sendKeys(name);
+        return this;
+    }
+
+    public AuthorizedUserHomePage inputEmailRegistration(String email) {
+        inputEmailRegistration.sendKeys(email);
+        return this;
+    }
+
+    public AuthorizedUserHomePage inputPasswordRegistration(String password) {
+        inputPasswordRegistration.sendKeys(password);
+        return this;
+    }
+
+    public AuthorizedUserHomePage clickButtonRegistration() {
+        clickButtonRegistration.click();
+        return this;
     }
 
     public String getButtonUsers() {
@@ -52,13 +92,8 @@ public class AuthorizedUserHomePage extends AbstractPage {
     public String getButtonNotificationsName() {
         return buttonNotifications.getText();
     }
-
     public String getButtonUserTasksName() {
         return buttonUserTasks.getText();
-    }
-
-    public String getDropdownMenuUserAccountName() {
-        return dropdownMenuUserAccount.getText();
     }
 
     public TasksPage clickButtonTasks() {
@@ -71,15 +106,27 @@ public class AuthorizedUserHomePage extends AbstractPage {
         return new CompaniesPage(driver);
     }
 
-    public UserProfilePage openUserProfilePage() {
-        dropdownMenuUserAccount.click();
-        buttonUserAccount.click();
-        return new UserProfilePage(driver);
+    public String getAuthorizedUserName() {
+        return dropdownMenuUserAccount.getText();
     }
 
-    public HomePage logOutAuthorizedUserPage() {
+    public AuthorizedUserHomePage openUserProfilePage() {
+        dropdownMenuUserAccount.click();
+        buttonUserAccount.click();
+        return new AuthorizedUserHomePage(driver);
+    }
+
+    public AuthorizedUserHomePage logOutAuthorizedUserPage() {
         dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
-        return new HomePage(driver);
+        return new AuthorizedUserHomePage(driver);
+    }
+
+    public AuthorizedUserHomePage fillFormRegistration(String name, String email, String password) {
+        inputNameRegistration(name);
+        inputEmailRegistration(email);
+        inputPasswordRegistration(password);
+        clickButtonRegistration();
+        return new AuthorizedUserHomePage(driver);
     }
 }
