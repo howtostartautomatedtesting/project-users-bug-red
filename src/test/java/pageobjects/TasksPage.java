@@ -23,6 +23,12 @@ public class TasksPage extends AbstractPage{
     @FindBy(xpath = "//a[@href='/tasks/add.html']")
     private WebElement buttonAddTask;
 
+    @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
+    private WebElement buttonChangeTask;
+
+    @FindBy(xpath = "//div[@class=\"notifications bottom-right\"]")
+    private WebElement tooltip;
+
     public TasksPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -49,9 +55,18 @@ public class TasksPage extends AbstractPage{
         return buttonAddTask.getText();
     }
 
+    public String getTooltipTitle(){
+        return tooltip.getText().replaceAll("[^А-Яа-я\" \"]","");
+    }
+
     public AddTaskPage addNewTask(){
         buttonAddTask.click();
         return new AddTaskPage(driver);
+    }
+
+    public EditTaskPage clickButtonChangeTask() {
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
     }
 
     public String getTaskName(String taskName){
@@ -80,12 +95,12 @@ public class TasksPage extends AbstractPage{
         return this;
     }
 
-    //необходимо добавить PageObject EditTaskPage
-    /*public EditTaskPage editTask(String taskName){
+
+    public EditTaskPage editTask(String taskName){
         WebElement buttonEditTask = driver.findElement(By.xpath(getButtonEditTaskXPath(taskName)));
         buttonEditTask.click();
         return new EditTaskPage(driver);
-    }*/
+    }
 
     //необходимо добавить PageObject AddTaskToSchedulePage
     /*public AddTaskToSchedulePage addTaskToSchedule(String taskName){
@@ -100,22 +115,22 @@ public class TasksPage extends AbstractPage{
     }
 
     private String getTaskNameXPath(String taskName){
-        String xpathNamePart = "td[1]//a";
+        String xpathNamePart = "//td[1]//a";
         return getTaskXPathByTaskName(taskName).concat(xpathNamePart);
     }
 
     private String getButtonAddToScheduleXPath(String taskName){
-        String xpathButtonSchedulePart = "td[2]//a";
+        String xpathButtonSchedulePart = "//td[2]//a";
         return getTaskXPathByTaskName(taskName).concat(xpathButtonSchedulePart);
     }
 
     private String getButtonEditTaskXPath(String taskName){
-        String xpathButtonEditTaskPart = "td[3]//a";
+        String xpathButtonEditTaskPart = "//td[3]//a";
         return getTaskXPathByTaskName(taskName).concat(xpathButtonEditTaskPart);
     }
 
     private String getButtonDeleteTaskXPath(String taskName){
-        String xpathButtonDeleteTaskPart = "td[4]//a";
+        String xpathButtonDeleteTaskPart = "//td[4]//a";
         return getTaskXPathByTaskName(taskName).concat(xpathButtonDeleteTaskPart);
     }
 }

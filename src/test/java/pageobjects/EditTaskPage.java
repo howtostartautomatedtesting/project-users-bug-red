@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.spec.ECGenParameterSpec;
+
 public class EditTaskPage extends AbstractPage {
     private WebDriver driver;
 
@@ -29,6 +31,8 @@ public class EditTaskPage extends AbstractPage {
     @FindBy(xpath = "//select[@name='user']")
     private WebElement dropBoxResponsible;
     @FindBy(xpath = "//input[@type='submit']")
+    private WebElement buttonAddNewTask;
+    @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
     private WebElement buttonChangeTask;
 
     public String getHeadingEditTaskText() {
@@ -52,6 +56,16 @@ public class EditTaskPage extends AbstractPage {
         inputName.sendKeys(name);
         return this;
     }
+    public String emptyInputNameTip(){
+       return inputName.getAttribute("validationMessage");
+    }
+    public String emptyInputDescriptionTip(){
+        return inputDescription.getAttribute("validationMessage");
+    }
+
+    public String getButtonEditTaskPageText() {
+        return buttonAddNewTask.getText();
+    }
 
     public EditTaskPage fillDescription(String description) {
         inputDescription.clear();
@@ -64,10 +78,6 @@ public class EditTaskPage extends AbstractPage {
         dropBoxResponsible.sendKeys(responsible, Keys.ENTER);
         return this;
     }
-    /* public TasksPage clickChangeTask() {
-        buttonChangeTask.click();
-        return new TasksPage(driver);
-    } */
 
     public EditTaskPage fillFormEditTask(String name, String description, String responsible) {
         fillName(name);
@@ -76,13 +86,13 @@ public class EditTaskPage extends AbstractPage {
         return this;
     }
 
-   /* public TasksPage createEditTask(String name, String description, String responsible) {
+    public EditTaskPage fillFormEditTaskAndClickButton(String name, String description, String responsible) {
         fillName(name);
         fillDescription(description);
         fillResponsible(responsible);
-        clickChangeTask();
-        return new TasksPage(driver);
-    }*/
+        buttonChangeTask.click();
+        return new EditTaskPage(driver);
+    }
 
 }
 
