@@ -3,54 +3,50 @@ import org.testng.annotations.Test;
 import pageobjects.AddCompanyPage;
 import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
+import uiTitles.AddCompanyPageUITitles;
+import utils.UserCreator;
 
 import static org.testng.Assert.assertEquals;
 
 public class AddCompanyPageTest extends AbstractTest {
 
+    private String userName;
+    private String userMail;
+    private String userPassword;
     private AuthorizedUserHomePage authorizedUser;
 
     @BeforeGroups("authorizedUser")
     public void logInAccount() {
-        String testUserEmail = "testUser@mail.ru";
-        String testUserPassword = "test";
+        userName = UserCreator.getUserName();
+        userMail = UserCreator.getEmail();
+        userPassword = UserCreator.getPassword();
         authorizedUser = new UserLoginPage(driver).openPage()
-                .fillFormLoginAndClickButtonAuthorization(testUserEmail, testUserPassword);
+                .fillFormRegistrationAndClickButtonRegistration(userName, userMail, userPassword);
     }
 
     @Test(groups = "authorizedUser")
     public void testAddCompanyPageFormNames() {
-        String expectedHeaderTitle = "Добавление компании";
-        String expectedFieldNameTitle = "Название";
-        String expectedFieldTypeTitle = "ТИП";
-        String expectedFieldINNTitle = "ИНН";
-        String expectedFieldOGRNTitle = "ОГРН";
-        String expectedFieldKPPTitle = "КПП";
-        String expectedFieldPhoneTitle = "Телефон";
-        String expectedFieldAddressTitle = "Адрес";
-        String expectedFieldUsersTitle = "Сотрудники";
-        String expectedButtonClearFieldUsersName = "Очистить поле";
-        String expectedButtonAddCompanyName = "Добавить компанию";
-
         AddCompanyPage addCompanyPage = authorizedUser.clickButtonCompanies()
                 .clickButtonAddCompany();
 
-        assertEquals(addCompanyPage.getHeaderTitle(), expectedHeaderTitle);
-        assertEquals(addCompanyPage.getFieldNameTitle(), expectedFieldNameTitle);
-        assertEquals(addCompanyPage.getFieldTypeTitle(), expectedFieldTypeTitle);
-        assertEquals(addCompanyPage.getFieldINNTitle(), expectedFieldINNTitle);
-        assertEquals(addCompanyPage.getFieldOGRNTitle(), expectedFieldOGRNTitle);
-        assertEquals(addCompanyPage.getFieldKPPTitle(), expectedFieldKPPTitle);
-        assertEquals(addCompanyPage.getFieldPhoneTitle(), expectedFieldPhoneTitle);
-        assertEquals(addCompanyPage.getFieldAddressTitle(), expectedFieldAddressTitle);
-        assertEquals(addCompanyPage.getFieldUsersTitle(), expectedFieldUsersTitle);
-        assertEquals(addCompanyPage.getButtonClearFieldUsersName(), expectedButtonClearFieldUsersName);
-        assertEquals(addCompanyPage.getButtonAddCompanyName(), expectedButtonAddCompanyName);
+        assertEquals(addCompanyPage.getHeaderTitle(), AddCompanyPageUITitles.EXPECTED_HEADER_TITLE);
+        assertEquals(addCompanyPage.getFieldNameTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_NAME_TITLE);
+        assertEquals(addCompanyPage.getFieldTypeTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_TYPE_TITLE);
+        assertEquals(addCompanyPage.getFieldINNTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_INN_TITLE);
+        assertEquals(addCompanyPage.getFieldOGRNTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_OGRN_TITLE);
+        assertEquals(addCompanyPage.getFieldKPPTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_KPP_TITLE);
+        assertEquals(addCompanyPage.getFieldPhoneTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_PHONE_TITLE);
+        assertEquals(addCompanyPage.getFieldAddressTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_ADDRESS_TITLE);
+        assertEquals(addCompanyPage.getFieldUsersTitle(), AddCompanyPageUITitles.EXPECTED_FIELD_USERS_TITLE);
+        assertEquals(addCompanyPage.getButtonClearFieldUsersName(), AddCompanyPageUITitles.EXPECTED_BUTTON_CLEAR_FIELD_USERS_NAME);
+        assertEquals(addCompanyPage.getButtonAddCompanyName(), AddCompanyPageUITitles.EXPECTED_BUTTON_ADD_COMPANY_NAME);
     }
 
-    @Test(groups = "authorizedUser")
+    @Test(groups = "authorizedUser", enabled = false)
     public void testAddCompanyPageFieldsTypes(){
         //надо ли проверять типы полей формы (text, button, select...)?
     }
+
+
 
 }
