@@ -128,7 +128,7 @@ public class UserFullProfilePage extends AbstractPage {
     }
 
     public UserFullProfilePage openUsersPage() {
-        driver.get(USER_FULL_PROFILE_PAGE_URL);
+        driver.get(USER_LOGIN_PAGE_URL);
         return this;
     }
 
