@@ -90,5 +90,9 @@ public class AddTaskPage extends AbstractPage {
         return new TasksPage(driver);
     }
 
+    public String getMessageIfFieldDescriptionIsEmpty(){
+        return inputDescription.getAttribute("validationMessage");
+    }
+
 }
 
