@@ -32,8 +32,7 @@ public class AddCompanyPageTest extends AbstractTest {
         String expectedButtonClearFieldUsersName = "Очистить поле";
         String expectedButtonAddCompanyName = "Добавить компанию";
 
-        AddCompanyPage addCompanyPage = authorizedUser.clickButtonCompanies()
-                .clickButtonAddCompany();
+        AddCompanyPage addCompanyPage = authorizedUser.clickButtonCompanies().clickButtonAddCompany();
 
         assertEquals(addCompanyPage.getHeaderTitle(), expectedHeaderTitle);
         assertEquals(addCompanyPage.getFieldNameTitle(), expectedFieldNameTitle);
@@ -49,7 +48,7 @@ public class AddCompanyPageTest extends AbstractTest {
     }
 
     @Test(groups = "authorizedUser")
-    public void testAddCompanyPageFieldsTypes(){
+    public void testAddCompanyPageFieldsTypes() {
         //надо ли проверять типы полей формы (text, button, select...)?
     }
 

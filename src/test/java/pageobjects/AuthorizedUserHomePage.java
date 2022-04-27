@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AuthorizedUserHomePage extends AbstractPage{
+import java.security.SecureRandom;
+
+public class AuthorizedUserHomePage extends AbstractPage {
 
     private WebDriver driver;
 
@@ -45,7 +47,6 @@ public class AuthorizedUserHomePage extends AbstractPage{
     @FindBy(xpath = "//input[@name='act_register_now']")
     private WebElement clickButtonRegistration;
 
-
     public AuthorizedUserHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -76,56 +77,56 @@ public class AuthorizedUserHomePage extends AbstractPage{
         return this;
     }
 
+    public String getButtonUsers() {
+        return buttonUsers.getText();
+    }
 
-    //необходимо добавить PageObject UsersPage
-    /*public UsersPage clickButtonUsers(){
-        buttonUsers.click();
-        return new UsersPage(driver);
-    }*/
+    public String getButtonTasksName() {
+        return buttonTasks.getText();
+    }
 
-    public TasksPage clickButtonTasks(){
+    public String getButtonCompanies() {
+        return buttonCompanies.getText();
+    }
+
+    public String getButtonNotificationsName() {
+        return buttonNotifications.getText();
+    }
+    public String getButtonUserTasksName() {
+        return buttonUserTasks.getText();
+    }
+
+    public TasksPage clickButtonTasks() {
         buttonTasks.click();
         return new TasksPage(driver);
     }
 
-    public AuthorizedUserHomePage clickButtonCompanies(){
+    public CompaniesPage clickButtonCompanies() {
         buttonCompanies.click();
-        return new AuthorizedUserHomePage(driver);
+        return new CompaniesPage(driver);
     }
 
-    //необходимо добавить PageObject NotificationsPage
-    /*public NotificationsPage clickButtonNotifications(){
-        buttonNotifications.click();
-        return new NotificationsPage(driver);
-    }*/
-
-    //необходимо добавить PageObject UserTasksPage
-    /*public UserTasksPage clickButtonUserTasks(){
-        buttonUserTasks.click();
-        return new UserTasksPage(driver);
-    }*/
-
-    public String getAuthorizedUserName(){
+    public String getAuthorizedUserName() {
         return dropdownMenuUserAccount.getText();
     }
 
-    public AuthorizedUserHomePage openUserProfilePage(){
+    public AuthorizedUserHomePage openUserProfilePage() {
         dropdownMenuUserAccount.click();
         buttonUserAccount.click();
         return new AuthorizedUserHomePage(driver);
     }
 
-    public AuthorizedUserHomePage logOutAuthorizedUserPage(){
+    public AuthorizedUserHomePage logOutAuthorizedUserPage() {
         dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
         return new AuthorizedUserHomePage(driver);
     }
 
-    public AuthorizedUserHomePage fillFormRegistration(String name, String email, String password){
+    public AuthorizedUserHomePage fillFormRegistration(String name, String email, String password) {
         inputNameRegistration(name);
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
-        clickButtonRegistration.click();
+        clickButtonRegistration();
         return new AuthorizedUserHomePage(driver);
     }
 }

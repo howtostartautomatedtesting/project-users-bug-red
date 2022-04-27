@@ -1,6 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.*;
+import utils.UserCreator;
 import title.TitleTaskPage;
 
 public class AddTaskPageTest extends AbstractTest {
@@ -9,7 +10,7 @@ public class AddTaskPageTest extends AbstractTest {
     public void testUIAddTaskPage() {
 
         AddTaskPage addTaskPage = new UserLoginPage(driver).openPage()
-                .fillFormRegistration(CreatorNewUsers.getUserName(), CreatorNewUsers.getEmail(), CreatorNewUsers.getPassword())
+                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
                 .clickButtonTasks().addNewTask();
 
         Assert.assertEquals(addTaskPage.getHeadingAddTaskText(), TitleTaskPage.EXPECTED_PAGE_HEADING_TITLE);
