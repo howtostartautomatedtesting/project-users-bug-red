@@ -1,7 +1,5 @@
 package title;
 
-import pageobjects.HomePage;
-
 public class TitleTaskPage {
 
     // Title for AddTaskPageTest
@@ -16,7 +14,6 @@ public class TitleTaskPage {
     public static final String EXPECTED_FIELD_TASK_EDIT_NAME_TITLE = "Название задачи";
     public static final String EXPECTED_FIELD_TASK_EDIT_RESPONSIBLE_TITLE = "Ответственный";
     public static final String EXPECTED_FIELD_TASK_EDIT_DESCRIPTION_TITLE = "Описание задачи";
-    public static final String EXPECTED_BUTTON_AND_EDIT_TASK_TITLE = "";
 
     // Title for AuthorizedUserHomePageCheckTest
     public static final String EXPECTED_OPEN_USER_PROFILE_PAGE = "http://users.bugred.ru/user/profile/index.html";

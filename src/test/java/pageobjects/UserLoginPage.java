@@ -135,7 +135,7 @@ public class UserLoginPage extends AbstractPage {
     public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password) {
         inputEmailLogin(email);
         inputPasswordLogin(password);
-        clickButtonAuthorization.click();
+        clickButtonAuthorization();
         return new AuthorizedUserHomePage(driver);
     }
     
@@ -143,7 +143,7 @@ public class UserLoginPage extends AbstractPage {
         inputNameRegistration(name);
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
-        clickButtonRegistration.click();
+        clickButtonRegistration();
         return new AuthorizedUserHomePage(driver);
     }
 }

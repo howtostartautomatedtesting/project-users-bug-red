@@ -67,19 +67,6 @@ public class EditTaskPage extends AbstractPage {
         return buttonAddNewTask.getText();
     }
 
-    public String getButtonEditTaskPageText() {
-        return buttonAddNewTask.getText();
-    }
-
-    public EditTaskPage getButtonChangeTask(){
-        buttonChangeTask.click();
-        return new EditTaskPage(driver);
-    }
-
-    public String getButtonEditTaskPageText() {
-        return buttonAddNewTask.getText();
-    }
-
     public EditTaskPage getButtonChangeTask(){
         buttonChangeTask.click();
         return new EditTaskPage(driver);

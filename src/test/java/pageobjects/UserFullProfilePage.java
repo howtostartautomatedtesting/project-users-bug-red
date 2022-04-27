@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class UserFullProfilePage extends AbstractPage {
     private WebDriver driver;
     private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
+    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/admin/view/";
 
     public UserFullProfilePage(WebDriver driver) {
         this.driver = driver;
