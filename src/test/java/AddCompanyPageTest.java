@@ -43,10 +43,21 @@ public class AddCompanyPageTest extends AbstractTest {
     }
 
     @Test(groups = "authorizedUser", enabled = false)
-    public void testAddCompanyPageFieldsTypes(){
+    public void testAddCompanyPageFieldsTypes() {
         //надо ли проверять типы полей формы (text, button, select...)?
     }
 
+    @Test(groups = "authorizedUser")
+    public void testAddCompanyPageAddCompanyWithEmptyFields() {
+        String emptyField = "";
+        AddCompanyPage addCompanyPage = authorizedUser.clickButtonCompanies()
+                .clickButtonAddCompany()
+                .fillFormAddCompany(emptyField, emptyField, emptyField, emptyField, emptyField, emptyField, emptyField, emptyField);
 
+        //проверка для русской локализации браузера
+        assertEquals(addCompanyPage.getMessageIfFieldNameIsEmpty(), AddCompanyPageUITitles.EXPECTED_EMPTY_INPUT_FIELD_MESSAGE_RUS);
 
+        //проверка для английской локализации браузера
+        //assertEquals(addCompanyPage.getMessageIfFieldNameIsEmpty(), AddCompanyPageUITitles.EXPECTED_EMPTY_INPUT_FIELD_MESSAGE_ENG);
+    }
 }
