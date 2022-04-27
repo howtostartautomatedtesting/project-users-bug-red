@@ -93,7 +93,9 @@ public class UserProfilePage extends AbstractPage {
         return labelINN.getText();
     }
 
-    public String getInputGender() {return inputGenderM.getText();}
+    public String getInputGender() {
+        return inputGenderM.getText();
+    }
 
     public UserProfilePage changePhoto(String path) {
         buttonLoadPhoto.click();
