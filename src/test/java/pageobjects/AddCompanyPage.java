@@ -8,8 +8,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddCompanyPage extends AbstractPage {
-    private WebDriver driver;
+    public static final String HEADING_ADD_COMPANY = "Добавление компании";
+    public static final String LABEL_NAME = "Название";
+    public static final String LABEL_TYPE = "ТИП";
+    public static final String LABEL_INN = "ИНН";
+    public static final String LABEL_OGRN = "ОГРН";
+    public static final String LABEL_KPP = "КПП";
+    public static final String LABEL_PHONE = "Телефон";
+    public static final String LABEL_ADDRESS = "Адрес";
+    public static final String LABEL_USERS = "Сотрудники";
+    public static final String BUTTON_LABEL_CLEAR_FIELD_USERS = "Очистить поле";
+    public static final String BUTTON_LABEL_ADD_COMPANY = "Добавить компанию";
+
     public static final String ADD_PAGE_COMPANY_URL = BASE_URL + "/companys/add.html";
+
+    private WebDriver driver;
 
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputName;
