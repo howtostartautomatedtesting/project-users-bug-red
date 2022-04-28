@@ -3,6 +3,7 @@ import org.testng.annotations.Test;
 import pageobjects.*;
 import uiTitles.AddTaskPageUITitles;
 import uiTitles.EditTaskPageUITitles;
+import uiTitles.TasksPageUITitles;
 import utils.UserCreator;
 
 public class AddTaskPageTest extends AbstractTest {
@@ -20,4 +21,18 @@ public class AddTaskPageTest extends AbstractTest {
         Assert.assertEquals(addTaskPage.getLabelDescriptionText(), AddTaskPageUITitles.EXPECTED_PAGE_ADD_TASK_DESCRIPTION_TITLE);
 
     }
+    @Test
+    public void testAddTaskPageValidData() {
+        String userName = UserCreator.getUserName();
+        TasksPage tasksPageVD = new UserLoginPage(driver).openPage()
+                .fillFormRegistrationAndClickButtonRegistration(userName, UserCreator.getEmail(), UserCreator.getPassword())
+                .clickButtonTasks().addNewTask()
+                .fillName("name")
+                .fillDescription("desc")
+                .fillResponsible(userName)
+                .clickButtonAddTask();
+        Assert.assertEquals(tasksPageVD.getPageTitle(), TasksPageUITitles.EXPECTED_PAGE_TITLE);
+
+    }
+
 }
