@@ -89,9 +89,11 @@ public class AuthorizedUserHomePage extends AbstractPage {
 
     public String getButtonNotificationsName() {
         return buttonNotifications.getText();
+
     }
     public String getButtonUserTasksName() {
         return buttonUserTasks.getText();
+
     }
 
     public TasksPage clickButtonTasks() {

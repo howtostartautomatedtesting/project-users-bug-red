@@ -26,7 +26,7 @@ public class TasksPage extends AbstractPage{
     @FindBy(xpath = "(//table[@class='table']//a[@class='btn btn-danger'])[1]")
     private WebElement buttonChangeTask;
 
-    @FindBy(xpath = "//div[@class=\"notifications bottom-right\"]")
+    @FindBy(xpath = "//div[@class='notifications bottom-right']")
     private WebElement tooltip;
 
     public TasksPage(WebDriver driver) {
@@ -94,7 +94,6 @@ public class TasksPage extends AbstractPage{
         buttonDeleteTask.click();
         return this;
     }
-
 
     public EditTaskPage editTask(String taskName){
         WebElement buttonEditTask = driver.findElement(By.xpath(getButtonEditTaskXPath(taskName)));
