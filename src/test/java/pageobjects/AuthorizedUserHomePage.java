@@ -10,25 +10,18 @@ public class AuthorizedUserHomePage extends AbstractPage {
 
     @FindBy(xpath = "//div[@id='main-menu']//a[@href='/']")
     private WebElement buttonUsers;
-
     @FindBy(xpath = "//div[@id='main-menu']//a[@href='/tasks/index.html']")
     private WebElement buttonTasks;
-
     @FindBy(xpath = "//div[@id='main-menu']//a[@href='/companys/index.html']")
     private WebElement buttonCompanies;
-
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/notify/index.html']")
     private WebElement buttonNotifications;
-
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/my/index.html']")
     private WebElement buttonUserTasks;
-
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@class='dropdown-toggle']")
     private WebElement dropdownMenuUserAccount;
-
     @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/profile/index.html']")
     private WebElement buttonUserAccount;
-
     @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/logout.html']")
     private WebElement buttonLogOutAccount;
 
