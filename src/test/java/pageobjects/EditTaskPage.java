@@ -6,9 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.security.spec.ECGenParameterSpec;
-
 public class EditTaskPage extends AbstractPage {
+    public static final String HEADING_EDIT_TASK = "Редактирование задачи";
+    public static final String LABEL_NAME = "Название задачи";
+    public static final String LABEL_DESCRIPTION = "Описание задачи";
+    public static final String LABEL_RESPONSIBLE = "Ответственный";
+    public static final String BUTTON_LABEL_EDIT_TASK = "Изменить задачу";
+
     private WebDriver driver;
 
     EditTaskPage(WebDriver driver) {
@@ -56,10 +60,12 @@ public class EditTaskPage extends AbstractPage {
         inputName.sendKeys(name);
         return this;
     }
-    public String emptyInputNameTip(){
-       return inputName.getAttribute("validationMessage");
+
+    public String emptyInputNameTip() {
+        return inputName.getAttribute("validationMessage");
     }
-    public String emptyInputDescriptionTip(){
+
+    public String emptyInputDescriptionTip() {
         return inputDescription.getAttribute("validationMessage");
     }
 
@@ -87,12 +93,8 @@ public class EditTaskPage extends AbstractPage {
     }
 
     public EditTaskPage fillFormEditTaskAndClickButton(String name, String description, String responsible) {
-        fillName(name);
-        fillDescription(description);
-        fillResponsible(responsible);
+        fillFormEditTask(name, description, responsible);
         buttonChangeTask.click();
         return new EditTaskPage(driver);
     }
-
 }
-

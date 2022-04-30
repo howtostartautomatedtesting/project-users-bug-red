@@ -2,10 +2,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.EditTaskPage;
 import pageobjects.UserLoginPage;
-import uiTitles.EditTaskPageUITitles;
 import utils.UserCreator;
 
 public class EditTaskPageTest extends AbstractTest{
+
     @Test
     public void testUIEditTaskPage() {
         String name="Task";
@@ -13,13 +13,19 @@ public class EditTaskPageTest extends AbstractTest{
         String responsible = "Raman";
 
         EditTaskPage editTaskPage = new UserLoginPage(driver).openPage()
-                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
-                .clickButtonTasks().addNewTask().fillFormTaskAddClickButtonAdd(name,description,responsible).clickButtonChangeTask();
+                .fillFormRegistrationAndClickButtonRegistration(
+                        UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword())
+                .clickButtonTasks()
+                    .addNewTask()
+                    .fillFormTaskAddClickButtonAdd(name,description,responsible)
+                    .clickButtonChangeTask();
 
-        Assert.assertEquals(editTaskPage.getHeadingEditTaskText(), EditTaskPageUITitles.EXPECTED_PAGE_EDIT_HEADING_TITLE);
-        Assert.assertEquals(editTaskPage.getLabelNameText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_NAME_TITLE);
-        Assert.assertEquals(editTaskPage.getLabelDescriptionText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_DESCRIPTION_TITLE);
-        Assert.assertEquals(editTaskPage.getLabelResponsibleText(), EditTaskPageUITitles.EXPECTED_FIELD_TASK_EDIT_RESPONSIBLE_TITLE);
-        Assert.assertEquals(editTaskPage.getButtonEditTaskPageText(), EditTaskPageUITitles.EXPECTED_BUTTON_AND_EDIT_TASK_TITLE);
+        Assert.assertEquals(editTaskPage.getHeadingEditTaskText(), EditTaskPage.HEADING_EDIT_TASK);
+        Assert.assertEquals(editTaskPage.getLabelNameText(), EditTaskPage.LABEL_NAME);
+        Assert.assertEquals(editTaskPage.getLabelDescriptionText(), EditTaskPage.LABEL_DESCRIPTION);
+        Assert.assertEquals(editTaskPage.getLabelResponsibleText(), EditTaskPage.LABEL_RESPONSIBLE);
+        Assert.assertEquals(editTaskPage.getButtonEditTaskPageText(), EditTaskPage.BUTTON_LABEL_EDIT_TASK);
     }
 }
