@@ -147,7 +147,7 @@ public class UserFullProfilePage extends AbstractPage {
         menuUserProfile.click();
         return this;
     }
-
+    
     public String getHeadingProfile() {
         return headingProfile.getText();
     }
