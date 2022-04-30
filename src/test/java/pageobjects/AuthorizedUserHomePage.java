@@ -50,7 +50,7 @@ public class AuthorizedUserHomePage extends AbstractPage {
         return buttonUserTasks.getText();
     }
 
-    public String getDropdownMenuUserAccountName() {
+    public String getAuthorizedUserName() {
         return dropdownMenuUserAccount.getText();
     }
 

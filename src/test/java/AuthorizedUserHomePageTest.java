@@ -36,6 +36,6 @@ public class AuthorizedUserHomePageTest extends AbstractTest {
         Assert.assertEquals(authorizedUserHomePage.getButtonCompanies(), BUTTON_LABEL_COMPANIES);
         Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), LINK_VALUE_NOTIFICATIONS);
         Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), LINK_VALUE_TASKS);
-        Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
+        Assert.assertEquals(authorizedUserHomePage.getAuthorizedUserName(), UserCreator.getUserName().toLowerCase());
     }
 }
