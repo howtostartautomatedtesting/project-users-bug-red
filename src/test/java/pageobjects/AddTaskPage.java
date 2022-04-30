@@ -7,8 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddTaskPage extends AbstractPage {
+    public static final String HEADING_ADD_TASK = "Добавление задачи";
+    public static final String LABEL_NAME = "Название задачи";
+    public static final String LABEL_DESCRIPTION = "Описание задачи";
+    public static final String LABEL_RESPONSIBLE = "Ответственный";
+
     private WebDriver driver;
-    public static final String ADD_TASK_PAGE_URL = BASE_URL + "/tasks/add.html";
 
     public AddTaskPage(WebDriver driver) {
         this.driver = driver;
@@ -83,12 +87,8 @@ public class AddTaskPage extends AbstractPage {
     }
 
     public TasksPage fillFormTaskAddClickButtonAdd(String name, String description, String responsible) {
-        fillName(name);
-        fillDescription(description);
-        fillResponsible(responsible);
+        fillFormTaskAdd(name, description, responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
     }
-
 }
-

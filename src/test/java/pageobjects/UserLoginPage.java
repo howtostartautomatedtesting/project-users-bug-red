@@ -6,48 +6,44 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UserLoginPage extends AbstractPage {
-    private WebDriver driver;
+    public static final String EXPECTED_FORM_LOGIN_TITLE = "Вход";
+    public static final String EXPECTED_FORM_REGISTRATION_TITLE = "Регистрация";
+    public static final String EXPECTED_BUTTON_AUTHORIZATION_TITLE = "Авторизоваться";
+    public static final String EXPECTED_BUTTON_REGISTRATION_TITLE = "Зарегистрироваться";
+    public static final String EXPECTED_FIELD_NAME_TITLE = "Имя";
+    public static final String EXPECTED_FIELD_EMAIL_TITLE = "Email";
+    public static final String EXPECTED_FIELD_PASSWORD_TITLE = "Пароль";
+
     public static final String USER_LOGIN_URL = BASE_URL + "/user/login/index.html";
+
+    private WebDriver driver;
 
     @FindBy(xpath = "//div[@class='col-md-6'][1]/h2")
     private WebElement formTitleLogin;
-
     @FindBy(xpath = "//input[@name='login']")
     private WebElement inputEmailLogin;
-
     @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@name='password']")
     private WebElement inputPasswordLogin;
-
     @FindBy(xpath = "//form[@action='/user/login/index.html']//input[@class='btn btn-danger']")
     private WebElement buttonAuthorization;
-
     @FindBy(xpath = "//div[@class='col-md-6'][2]/h2")
     private WebElement formTitleRegistration;
-
     @FindBy(xpath = "//input[@name='name']")
     private WebElement inputNameRegistration;
-
     @FindBy(xpath = "//input[@name='email']")
     private WebElement inputEmailRegistration;
-
     @FindBy(xpath = "//form[@action='/user/register/index.html']//input[@name='password']")
     private WebElement inputPasswordRegistration;
-
     @FindBy(xpath = "//input[@name='act_register_now']")
     private WebElement buttonRegistration;
-
     @FindBy(xpath = "//form[@action='/user/login/index.html']//tr[1]/td[1]")
     private WebElement titleEmailLogin;
-
     @FindBy(xpath = "//form[@action='/user/login/index.html']//tr[2]/td[1]")
     private WebElement titlePasswordLogin;
-
     @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[1]/td[1]")
     private WebElement titleNameRegistration;
-
     @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[2]/td[1]")
     private WebElement titleEmailRegistration;
-
     @FindBy(xpath = "//form[@action='/user/register/index.html']//tr[3]/td[1]")
     private WebElement titlePasswordRegistration;
 
@@ -136,7 +132,7 @@ public class UserLoginPage extends AbstractPage {
     public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password){
         inputEmailLogin(email);
         inputPasswordLogin(password);
-        buttonAuthorization.click();
+        clickButtonAuthorization();
         return new AuthorizedUserHomePage(driver);
     }
     
@@ -144,7 +140,7 @@ public class UserLoginPage extends AbstractPage {
         inputNameRegistration(name);
         inputEmailRegistration(email);
         inputPasswordRegistration(password);
-        buttonRegistration.click();
+        clickButtonRegistration();
         return new AuthorizedUserHomePage(driver);
     }
 }
