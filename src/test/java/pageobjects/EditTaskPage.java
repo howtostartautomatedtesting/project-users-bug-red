@@ -70,7 +70,7 @@ public class EditTaskPage extends AbstractPage {
     }
 
     public String getButtonEditTaskPageText() {
-        return buttonAddNewTask.getText();
+        return buttonAddNewTask.getAttribute("value");
     }
 
     public EditTaskPage fillDescription(String description) {

@@ -7,10 +7,10 @@ import utils.UserCreator;
 public class EditTaskPageTest extends AbstractTest{
 
     @Test
-    public void testUIEditTaskPage() {
+    public void testUIEditTaskPage() throws InterruptedException {
         String name="Task";
         String description = "New";
-        String responsible = "Raman";
+        String responsible = "";
 
         EditTaskPage editTaskPage = new UserLoginPage(driver).openPage()
                 .fillFormRegistrationAndClickButtonRegistration(
