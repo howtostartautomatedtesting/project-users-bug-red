@@ -7,7 +7,7 @@ import utils.UserCreator;
 public class EditTaskPageTest extends AbstractTest{
 
     @Test
-    public void testUIEditTaskPage() throws InterruptedException {
+    public void testUIEditTaskPage() {
         String name="Task";
         String description = "New";
         String responsible = "";

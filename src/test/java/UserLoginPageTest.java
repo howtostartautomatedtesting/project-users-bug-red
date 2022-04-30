@@ -1,16 +1,16 @@
-import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pageobjects.AuthorizedUserHomePage;
-import pageobjects.HomePage;
 import pageobjects.UserLoginPage;
-import utils.UserCreator;
 import static org.testng.Assert.assertEquals;
 
 public class UserLoginPageTest extends AbstractTest {
+/*
     private String authorizedUserName;
     private String authorizedUserMail;
     private String authorizedUserPassword;
+*/
 
+    @Ignore
     @Test
     public void testUserLoginPageFormNames() {
         UserLoginPage userLoginPage = new UserLoginPage(driver).openPage();
@@ -26,7 +26,7 @@ public class UserLoginPageTest extends AbstractTest {
         assertEquals(userLoginPage.getButtonRegistrationName(), UserLoginPage.EXPECTED_BUTTON_REGISTRATION_TITLE);
     }
 
-    @BeforeGroups("authorizedUser")
+/*    @BeforeGroups("authorizedUser")
     public void registrationToAccount() {
         authorizedUserName = UserCreator.getUserName();
         authorizedUserMail = UserCreator.getEmail();
@@ -72,5 +72,5 @@ public class UserLoginPageTest extends AbstractTest {
                 .fillFormLoginAndClickButtonAuthorization(" ", " ");
 
         assertEquals(driver.getCurrentUrl(), UserLoginPage.USER_LOGIN_URL);
-    }
+    }*/
 }

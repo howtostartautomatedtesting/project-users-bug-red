@@ -18,6 +18,8 @@ public class AuthorizedUserHomePage extends AbstractPage {
     private WebElement buttonNotifications;
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@href='/tasks/my/index.html']")
     private WebElement buttonUserTasks;
+    @FindBy(xpath = "//li[@id='fat-menu']")
+    private WebElement linkUser;
     @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@class='dropdown-toggle']")
     private WebElement dropdownMenuUserAccount;
     @FindBy(xpath = "//ul[@class='dropdown-menu']//a[@href='/user/profile/index.html']")
@@ -64,14 +66,16 @@ public class AuthorizedUserHomePage extends AbstractPage {
         return new CompaniesPage(driver);
     }
 
-    public UserProfilePage openUserProfilePage() {
-        dropdownMenuUserAccount.click();
+    public AuthorizedUserHomePage clickLinkUser() {
+        linkUser.click();
+        return this;
+    }
+    public UserProfilePage clickLinkUserProfile() {
         buttonUserAccount.click();
         return new UserProfilePage(driver);
     }
 
     public HomePage logOutAuthorizedUserPage() {
-        dropdownMenuUserAccount.click();
         buttonLogOutAccount.click();
         return new HomePage(driver);
     }

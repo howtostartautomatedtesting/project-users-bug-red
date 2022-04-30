@@ -4,6 +4,7 @@ import pageobjects.HomePage;
 import static org.testng.Assert.assertEquals;
 
 public class HomePageTest extends AbstractTest {
+
     @Test
     public void testUIHomePage() {
         HomePage homePage = new HomePage(driver).openPage();

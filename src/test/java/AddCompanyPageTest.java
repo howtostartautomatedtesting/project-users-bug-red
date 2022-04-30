@@ -10,6 +10,7 @@ public class AddCompanyPageTest extends AbstractTest {
 
     private AuthorizedUserHomePage authorizedUser;
 
+/*
     @BeforeGroups("authorizedUser")
     public void logInAccount() {
         String testUserEmail = "testUser@mail.ru";
@@ -52,5 +53,6 @@ public class AddCompanyPageTest extends AbstractTest {
     public void testAddCompanyPageFieldsTypes(){
         //надо ли проверять типы полей формы (text, button, select...)?
     }
+*/
 
 }

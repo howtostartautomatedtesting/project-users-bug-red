@@ -1,18 +1,19 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageobjects.HomePage;
 import pageobjects.TasksPage;
-import pageobjects.UserLoginPage;
 import utils.UserCreator;
 
 public class TasksPageTest extends AbstractTest {
 
     @Test
-    public void testUITasksPage() {
-        TasksPage tasksPage = new UserLoginPage(driver).openPage()
-                .fillFormRegistrationAndClickButtonRegistration(
-                        UserCreator.getUserName(),
-                        UserCreator.getEmail(),
-                        UserCreator.getPassword())
+    public void testTasksPageUI() {
+        String name = UserCreator.getUserName();
+        String email = UserCreator.getEmail();
+        String password = UserCreator.getPassword();
+
+        TasksPage tasksPage = new HomePage(driver).openPage().clickButtonLogin()
+                .fillFormRegistrationAndClickButtonRegistration(name, email, password)
                 .clickButtonTasks();
 
         Assert.assertEquals(tasksPage.getPageTitle(), TasksPage.HEADING_TASKS);

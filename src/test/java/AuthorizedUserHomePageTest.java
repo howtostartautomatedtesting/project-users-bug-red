@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
@@ -17,7 +18,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     AuthorizedUserHomePage authorizedUserHomePage;
 
     @BeforeMethod
-    public void pathToPageAuthorizedUserHome(){
+    public void pathToPageAuthorizedUserHome() {
         userLoginPage = new UserLoginPage(driver);
 
         userLoginPage
@@ -28,8 +29,9 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
                         UserCreator.getPassword());
     }
 
+    @Ignore
     @Test
-    public void testAuthorizedUserHomePageUI(){
+    public void testAuthorizedUserHomePageUI() {
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
         Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), BUTTON_LABEL_USERS);

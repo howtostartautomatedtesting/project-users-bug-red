@@ -165,8 +165,8 @@ public class UserProfilePage extends AbstractPage {
         return new UserProfilePage(driver);
     }
 
-    public UserProfilePage clickButtonFullProfile(){
+    public UserFullProfilePage clickButtonFullProfile(){
         buttonFullProfile.click();
-        return new UserProfilePage(driver);
+        return new UserFullProfilePage(driver);
     }
 }
