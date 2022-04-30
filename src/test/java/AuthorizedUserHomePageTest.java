@@ -5,7 +5,7 @@ import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
 import utils.UserCreator;
 
-public class AuthorizedUserHomePageTest extends AbstractTest{
+public class AuthorizedUserHomePageTest extends AbstractTest {
     public static final String BUTTON_LABEL_USERS = "Пользователи";
     public static final String BUTTON_LABEL_TASKS = "Задачи";
     public static final String BUTTON_LABEL_COMPANIES = "Компании";
@@ -17,9 +17,8 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     AuthorizedUserHomePage authorizedUserHomePage;
 
     @BeforeMethod
-    public void pathToPageAuthorizedUserHome(){
+    public void pathToPageAuthorizedUserHome() {
         userLoginPage = new UserLoginPage(driver);
-
         userLoginPage
                 .openPage()
                 .fillFormRegistrationAndClickButtonRegistration(
@@ -29,7 +28,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     }
 
     @Test
-    public void testAuthorizedUserHomePageUI(){
+    public void testAuthorizedUserHomePageUI() {
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
         Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), BUTTON_LABEL_USERS);
@@ -37,6 +36,6 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
         Assert.assertEquals(authorizedUserHomePage.getButtonCompanies(), BUTTON_LABEL_COMPANIES);
         Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), LINK_VALUE_NOTIFICATIONS);
         Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), LINK_VALUE_TASKS);
-        Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
+        Assert.assertEquals(authorizedUserHomePage.getAuthorizedUserName(), UserCreator.getUserName().toLowerCase());
     }
 }

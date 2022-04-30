@@ -46,7 +46,7 @@ public class RegistrationFormTest extends AbstractTest {
                 UserCreator.getEmail(),
                 UserCreator.getPassword());
 
-        Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
+        Assert.assertEquals(authorizedUserHomePage.getAuthorizedUserName(), UserCreator.getUserName().toLowerCase());
 
         // TODO remove sleep!
         //Thread.sleep(3000);

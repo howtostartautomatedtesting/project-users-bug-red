@@ -43,8 +43,7 @@ public class UserLoginPageTest extends AbstractTest {
                 .clickButtonLogin()
                 .fillFormLoginAndClickButtonAuthorization(authorizedUserMail, authorizedUserPassword);
 
-        // TODO implement method getAuthorizedUserName() in class AuthorizedUserHomePage
-        // assertEquals(authorizedUserHomePage.getAuthorizedUserName(), authorizedUserName.toLowerCase());
+        assertEquals(authorizedUserHomePage.getAuthorizedUserName(), authorizedUserName.toLowerCase());
     }
 
     @Test(groups = "authorizedUser")
