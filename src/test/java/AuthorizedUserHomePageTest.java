@@ -19,6 +19,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
 
     UserLoginPage userLoginPage;
     AuthorizedUserHomePage authorizedUserHomePage;
+    UserProfilePage userProfilePage;
 
     @BeforeMethod
     public void pathToPageAuthorizedUserHome(){
@@ -47,11 +48,9 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     @Test
     public void testAuthorizedUserHomePageCheckLinkButtonUserAccount() {
 
-        UserProfilePage userHomePage = new UserLoginPage(driver).openPage()
-                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword())
-                .openUserProfilePage();
+        userProfilePage = new AuthorizedUserHomePage(driver).openUserProfilePage();
 
-        assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_USER_ACCOUNT_PAGE);
+        assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_OPEN_USER_PROFILE_PAGE);
     }
 
 }
