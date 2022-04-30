@@ -59,5 +59,4 @@ public class AddCompanyPageTest extends AbstractTest {
         //проверка для английской локализации браузера
         //assertEquals(addCompanyPage.getMessageIfFieldNameIsEmpty(), AddCompanyPage.MESSAGE_EMPTY_INPUT_FIELD_ENG);
     }
-// (add test method in AddCompanyPageTest for add company with empty fields)
 }
