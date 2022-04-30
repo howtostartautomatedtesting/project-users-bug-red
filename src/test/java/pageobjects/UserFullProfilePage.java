@@ -138,6 +138,16 @@ public class UserFullProfilePage extends AbstractPage {
         return this;
     }
 
+    public UserFullProfilePage fillFormLoginUser(String email, String password) {
+        openUsersLoginPage();
+        inputLogin.sendKeys(email);
+        inputPassword.sendKeys(password);
+        buttonAuthorization.click();
+        menuUserName.click();
+        menuUserProfile.click();
+        return this;
+    }
+
     public String getHeadingProfile() {
         return headingProfile.getText();
     }
