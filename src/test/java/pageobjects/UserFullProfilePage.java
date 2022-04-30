@@ -26,7 +26,7 @@ public class UserFullProfilePage extends AbstractPage {
     public static final String LABEL_ADDRESS = "Адрес";
     public static final String LABEL_INN = "ИНН";
 
-    private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
+    private final String USER_FULL_PROFILE_PAGE_URL = BASE_URL + "/user/login/index.html";
 
     private WebDriver driver;
 
@@ -134,7 +134,17 @@ public class UserFullProfilePage extends AbstractPage {
     private WebElement inputAddress;
 
     public UserFullProfilePage openUsersLoginPage() {
-        driver.get(USER_LOGIN_PAGE_URL);
+        driver.get(USER_FULL_PROFILE_PAGE_URL);
+        return this;
+    }
+
+    public UserFullProfilePage fillFormLoginUser(String email, String password) {
+        openUsersLoginPage();
+        inputLogin.sendKeys(email);
+        inputPassword.sendKeys(password);
+        buttonAuthorization.click();
+        menuUserName.click();
+        menuUserProfile.click();
         return this;
     }
 
