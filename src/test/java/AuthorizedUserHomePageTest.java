@@ -16,11 +16,14 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
 
         userLoginPage
                 .openPage()
-                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword());
+                .fillFormRegistrationAndClickButtonRegistration(
+                        UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword());
     }
 
     @Test
-    public void testUserAuthorizedUserHomePageUI(){
+    public void testAuthorizedUserHomePageUI(){
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
         Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_USERS_TITLE);
