@@ -46,7 +46,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest {
     }
 
     @Test
-    public void testAuthorizedUserCheckButtonCompany() {
+    public void testAuthorizedUserCheckButtonCompany(){
         companiesPage = new AuthorizedUserHomePage(driver).clickButtonCompanies();
 
         assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_CLICK_BUTTON_COMPANY_PAGE);
