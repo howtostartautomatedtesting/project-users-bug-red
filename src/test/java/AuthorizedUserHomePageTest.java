@@ -2,6 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.AuthorizedUserHomePage;
+import pageobjects.CompaniesPage;
 import pageobjects.HomePage;
 import pageobjects.UserLoginPage;
 import uiTitles.AuthorizedUserHomePageUITitles;
@@ -19,7 +20,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
 
     UserLoginPage userLoginPage;
     AuthorizedUserHomePage authorizedUserHomePage;
-    HomePage homePage;
+    CompaniesPage companiesPage;
 
     @BeforeMethod
     public void pathToPageAuthorizedUserHome(){
@@ -46,10 +47,10 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     }
 
     @Test
-    public void testAuthorizedUserHomePageCheckLinkButtonLogOut() {
-        homePage = new AuthorizedUserHomePage(driver).logOutAuthorizedUserPage();
+    public void testAuthorizedUserCheckButtonCompany() {
+       companiesPage = new AuthorizedUserHomePage(driver).clickButtonCompanies();
 
-        assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_OPEN_LOG_OUT_USER_PAGE);
+        assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_CLICK_BUTTON_COMPANY_PAGE);
     }
 
 }
