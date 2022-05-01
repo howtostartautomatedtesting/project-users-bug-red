@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import utils.UserCreator;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,9 @@ public class CreateNewUserTest {
         request.setEntity(new UrlEncodedFormEntity(authParams));
         CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
         String entity = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(entity.contains(existingName));
+        Assert.assertTrue(entity.contains("\"message\":\" \\u0422\\u0435\\u043a\\u0443\\u0449\\u0435\\u0435 " +
+                "\\u0424\\u0418\\u041e " + existingName + " \\u0443\\u0436\\u0435 \\u0435\\u0441\\u0442\\u044c \\u0432 " +
+                "\\u0431\\u0430\\u0437\\u0435\""));
 
 
     }
