@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import utils.UserCreator;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,9 @@ public class CreateNewUserTest {
         request.setEntity(new UrlEncodedFormEntity(authParams));
         CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
         String entity = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(entity.contains(inCorrectEmail));
+        System.out.println(entity);
+        Assert.assertTrue(entity.contains("\"message\":\" \\u041d\\u0435\\u043a\\u043e\\u0440" +
+                "\\u0435\\u043a\\u0442\\u043d\\u044b\\u0439  email " + inCorrectEmail));
 
 
     }
