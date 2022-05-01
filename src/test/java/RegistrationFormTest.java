@@ -14,19 +14,26 @@ public class RegistrationFormTest extends AbstractTest {
         userLoginPage = new UserLoginPage(driver).openPage();
         userLoginPage.fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), "");
 
-        Thread.sleep(3000);
+        // TODO add asserts! here
+
+        // TODO remove sleep!
+        //Thread.sleep(3000);
     }
 
     @Test
     public void testRegistrationWithEmptyEmail() {
         userLoginPage = new UserLoginPage(driver).openPage();
         userLoginPage.fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), "", UserCreator.getPassword());
+
+        // TODO add asserts! here
     }
 
     @Test
     public void testRegistrationWithEmptyName() {
         userLoginPage = new UserLoginPage(driver).openPage();
         userLoginPage.fillFormRegistrationAndClickButtonRegistration("", UserCreator.getEmail(), UserCreator.getPassword());
+
+        // TODO add asserts! here
     }
 
     @Test
@@ -34,10 +41,14 @@ public class RegistrationFormTest extends AbstractTest {
         userLoginPage = new UserLoginPage(driver).openPage();
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
-        userLoginPage.fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(), UserCreator.getEmail(), UserCreator.getPassword());
+        userLoginPage.fillFormRegistrationAndClickButtonRegistration(
+                UserCreator.getUserName(),
+                UserCreator.getEmail(),
+                UserCreator.getPassword());
+
         Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
 
-        Thread.sleep(3000);
+        // TODO remove sleep!
+        //Thread.sleep(3000);
     }
-
 }

@@ -3,10 +3,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
-import uiTitles.AuthorizedUserHomePageUITitles;
 import utils.UserCreator;
 
 public class AuthorizedUserHomePageTest extends AbstractTest{
+    public static final String BUTTON_LABEL_USERS = "Пользователи";
+    public static final String BUTTON_LABEL_TASKS = "Задачи";
+    public static final String BUTTON_LABEL_COMPANIES = "Компании";
+
+    public static final String LINK_VALUE_NOTIFICATIONS = " 0";
+    public static final String LINK_VALUE_TASKS = "0 заданий";
+
     UserLoginPage userLoginPage;
     AuthorizedUserHomePage authorizedUserHomePage;
 
@@ -16,18 +22,21 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
 
         userLoginPage
                 .openPage()
-                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword());
+                .fillFormRegistrationAndClickButtonRegistration(
+                        UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword());
     }
 
     @Test
-    public void testUserAuthorizedUserHomePageUI(){
+    public void testAuthorizedUserHomePageUI(){
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
-        Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_USERS_TITLE);
-        Assert.assertEquals(authorizedUserHomePage.getButtonTasksName(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_TASKS_TITLE);
-        Assert.assertEquals(authorizedUserHomePage.getButtonCompanies(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_COMPANIES_TITLE);
-        Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_NOTIFICATIONS_TITLE);
-        Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), AuthorizedUserHomePageUITitles.EXPECTED_BUTTON_USER_TASKS_TITLE);
+        Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), BUTTON_LABEL_USERS);
+        Assert.assertEquals(authorizedUserHomePage.getButtonTasksName(), BUTTON_LABEL_TASKS);
+        Assert.assertEquals(authorizedUserHomePage.getButtonCompanies(), BUTTON_LABEL_COMPANIES);
+        Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), LINK_VALUE_NOTIFICATIONS);
+        Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), LINK_VALUE_TASKS);
         Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
     }
 }

@@ -6,8 +6,29 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class UserFullProfilePage extends AbstractPage {
-    private WebDriver driver;
+    public static final String LABEL_INITIALS = "ФИО";
+    public static final String HEADING_PROFILE = "Профиль пользователя";
+    public static final String LABEL_EMAIL = "Email";
+    public static final String LABEL_GENDER = "Пол";
+    public static final String LABEL_BIRTHDAY = "Дата рождения";
+    public static final String LABEL_DATA_START = "Начал работать в компании";
+    public static final String LABEL_HOBBY = "Хобби";
+    public static final String LABEL_NAME_ONE = "имя1";
+    public static final String LABEL_SURNAME_ONE = "фамилия1";
+    public static final String LABEL_PATRONYMIC_ONE = "отчество1";
+    public static final String LABEL_CAT = "Кошечка";
+    public static final String LABEL_DOG = "Собачка";
+    public static final String LABEL_PARROT = "Попугайчик";
+    public static final String LABEL_CAVY = "Морская свинка";
+    public static final String LABEL_HAMSTER = "Хомячок";
+    public static final String LABEL_SQUIRREL = "Белочка";
+    public static final String LABEL_PHONE = "Телефон";
+    public static final String LABEL_ADDRESS = "Адрес";
+    public static final String LABEL_INN = "ИНН";
+
     private final String USER_LOGIN_PAGE_URL = BASE_URL + "/user/login/index.html";
+
+    private WebDriver driver;
 
     public UserFullProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -114,21 +135,6 @@ public class UserFullProfilePage extends AbstractPage {
 
     public UserFullProfilePage openUsersLoginPage() {
         driver.get(USER_LOGIN_PAGE_URL);
-        return this;
-    }
-
-    public UserFullProfilePage fillFormLoginUser(String email, String password) {
-        openUsersLoginPage();
-        inputLogin.sendKeys(email);
-        inputPassword.sendKeys(password);
-        buttonAuthorization.click();
-        menuUserName.click();
-        menuUserProfile.click();
-        return this;
-    }
-
-    public UserFullProfilePage openUsersPage() {
-        driver.get(USER_FULL_PROFILE_PAGE_URL);
         return this;
     }
 

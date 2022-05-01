@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageobjects.TasksPage;
 import pageobjects.UserLoginPage;
-import uiTitles.TasksPageUITitles;
 import utils.UserCreator;
 
 public class TasksPageTest extends AbstractTest {
@@ -10,11 +9,15 @@ public class TasksPageTest extends AbstractTest {
     @Test
     public void testUITasksPage() {
         TasksPage tasksPage = new UserLoginPage(driver).openPage()
-                .fillFormRegistrationAndClickButtonRegistration(UserCreator.getUserName(),UserCreator.getEmail(),UserCreator.getPassword())
+                .fillFormRegistrationAndClickButtonRegistration(
+                        UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword())
                 .clickButtonTasks();
-        Assert.assertEquals(tasksPage.getPageTitle(), TasksPageUITitles.EXPECTED_PAGE_TITLE);
-        Assert.assertEquals(tasksPage.getColumnTitleTaskName(), TasksPageUITitles.EXPECTED_COLUMN_TASK_NAME_TITLE);
-        Assert.assertEquals(tasksPage.getColumnTitleSchedule(), TasksPageUITitles.EXPECTED_COLUMN_SCHEDULE_TITLE);
-        Assert.assertEquals(tasksPage.getButtonAddTaskName(), TasksPageUITitles.EXPECTED_BUTTON_ADD_TASK_TITLE);
+
+        Assert.assertEquals(tasksPage.getPageTitle(), TasksPage.HEADING_TASKS);
+        Assert.assertEquals(tasksPage.getColumnTitleTaskName(), TasksPage.TABLE_HEADING_NAME);
+        Assert.assertEquals(tasksPage.getColumnTitleSchedule(), TasksPage.TABLE_HEADING_SCHEDULE);
+        Assert.assertEquals(tasksPage.getButtonAddTaskName(), TasksPage.BUTTON_LABEL_ADD_TASK);
     }
 }
