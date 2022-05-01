@@ -1,6 +1,5 @@
 package pageobjects;
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,6 +30,8 @@ public class CompaniesPage extends AbstractPage {
     private WebElement columnTitleDateOfChange;
     @FindBy(xpath = "//a[text()='Добавить компанию']")
     private WebElement buttonAddCompany;
+    @FindBy(xpath = "//tr[1]/td[2]/ins/a")
+    private WebElement companyName;
 
     public CompaniesPage(WebDriver driver) {
         this.driver = driver;
@@ -52,37 +53,41 @@ public class CompaniesPage extends AbstractPage {
         return this;
     }
 
-    public CompaniesPage getPageCompanies(){
+    public CompaniesPage getPageCompanies() {
         labelCompanies.click();
         return this;
     }
 
-    public AddCompanyPage clickButtonAddCompany(){
+    public AddCompanyPage clickButtonAddCompany() {
         buttonAddCompany.click();
         return new AddCompanyPage(driver);
     }
 
-    public String getHeaderCompanies(){
+    public String getCompanyName() {
+        return companyName.getText();
+    }
+
+    public String getHeaderCompanies() {
         return labelHeaderTitle.getText();
     }
 
-    public String getTableCompanies(){
+    public String getTableCompanies() {
         return tableCompanies.getText();
     }
 
-    public String getColumnTitleType(){
+    public String getColumnTitleType() {
         return columnTitleType.getText();
     }
 
-    public String getColumnTitleName(){
+    public String getColumnTitleName() {
         return columnTitleName.getText();
     }
 
-    public String getColumnTitleAuthor(){
+    public String getColumnTitleAuthor() {
         return columnTitleAuthor.getText();
     }
 
-    public String getColumnTitleDateOfChange(){
+    public String getColumnTitleDateOfChange() {
         return columnTitleDateOfChange.getText();
     }
 
