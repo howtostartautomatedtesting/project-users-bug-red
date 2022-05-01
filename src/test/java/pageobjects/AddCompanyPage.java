@@ -15,8 +15,10 @@ public class AddCompanyPage extends AbstractPage {
     private WebElement inputName;
     @FindBy(xpath = "//h2[text()='Добавление компании']")
     private WebElement labelHeaderTitle;
-    @FindBy(xpath = "//select[@name='type']")
+    @FindBy(xpath = "//span[@class='select2-selection__arrow']")
     private WebElement selectCompany;
+    @FindBy(xpath = "//span/span[1]/input")
+    private WebElement inputTypeCompany;
     @FindBy(xpath = "//input[@name='inn']")
     private WebElement inputInn;
     @FindBy(xpath = "//input[@name='ogrn']")
@@ -27,7 +29,7 @@ public class AddCompanyPage extends AbstractPage {
     private WebElement inputPhoneNumber;
     @FindBy(xpath = "//input[@name='adress']")
     private WebElement inputAddress;
-    @FindBy(xpath = "//ul[@class='select2-selection__rendered']")
+    @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement selectEmployees;
     @FindBy(xpath = "//a[@class='clear_field']")
     private WebElement buttonClearField;
@@ -55,8 +57,7 @@ public class AddCompanyPage extends AbstractPage {
 
     public AddCompanyPage chooseType(String type) {
         selectCompany.click();
-        selectCompany.sendKeys(type);
-        selectCompany.sendKeys(Keys.ENTER);
+        inputTypeCompany.sendKeys(type, Keys.ENTER);
         return this;
     }
 
@@ -108,7 +109,7 @@ public class AddCompanyPage extends AbstractPage {
         return this;
     }
 
-    public AddCompanyPage fillFormAndClickAddCompany(String name, String type, String inn, String ogrn, String kpp, String number, String address, String user) {
+    public CompaniesPage fillFormAndClickAddCompany(String name, String type, String inn, String ogrn, String kpp, String number, String address, String user) {
         typeName(name);
         chooseType(type);
         typeInn(inn);
@@ -118,7 +119,7 @@ public class AddCompanyPage extends AbstractPage {
         typeAddress(address);
         chooseEmployees(user);
         clickAddCompany();
-        return this;
+        return new CompaniesPage(driver);
     }
 
     private String getFieldTitleXPathByNameAttribute(String valueOfAttributeName){
