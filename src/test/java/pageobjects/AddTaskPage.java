@@ -58,6 +58,10 @@ public class AddTaskPage extends AbstractPage {
         return labelResponsible.getText();
     }
 
+    public String emptyInputNameTip() {
+        return inputName.getAttribute("validationMessage");
+    }
+
     public AddTaskPage fillName(String name) {
         inputName.sendKeys(name);
         return this;
