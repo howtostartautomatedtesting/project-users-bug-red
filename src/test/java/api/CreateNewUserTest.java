@@ -34,9 +34,8 @@ public class CreateNewUserTest {
         request.setEntity(new UrlEncodedFormEntity(authParams));
         CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
         String entity = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(entity.contains("\"message\":\""));
-
-
+        Assert.assertTrue(entity.contains("\"message\":\"\\u043f\\u043e\\u043b\\u0435 \\u0444\\u0438\\u043e \\u044f" +
+                "\\u0432\\u043b\\u044f\\u0435\\u0442\\u0441\\u044f \\u043e\\u0431\\u044f\\u0437\\u0430\\u0442" +
+                "\\u0435\\u043b\\u044c\\u043d\\u044b\\u043c\""));
     }
-
 }
