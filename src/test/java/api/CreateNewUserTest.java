@@ -34,7 +34,7 @@ public class CreateNewUserTest {
         authParams.add(new BasicNameValuePair("password", userPassword));
         request.setEntity(new UrlEncodedFormEntity(authParams));
         CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
-        String entity = EntityUtils.toString(response.getEntity(), StandardCharsets.US_ASCII);
+        String entity = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(entity.contains("\"message\":\" email " + existingEmail));
 
 
