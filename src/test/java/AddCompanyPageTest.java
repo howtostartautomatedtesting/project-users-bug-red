@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.AddCompanyPage;
@@ -27,14 +28,25 @@ public class AddCompanyPageTest extends AbstractTest {
     public static final String expectedButtonClearFieldUsersName = "Очистить поле";
     public static final String expectedButtonAddCompanyName = "Добавить компанию";
 
-    @BeforeMethod
-    public void pathToPageAuthorizedUserHome() {
+    @BeforeGroups("registrationUser")
+    public void pathToPageRegistrationUserHome() {
         userLoginPage = new UserLoginPage(driver);
 
         userLoginPage
                 .openPage()
                 .fillFormRegistrationAndClickButtonRegistration(
                         UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword());
+    }
+
+    @BeforeGroups("authorizationUser")
+    public void pathToPageAuthorizationUserHome() {
+        userLoginPage = new UserLoginPage(driver);
+
+        userLoginPage
+                .openPage()
+                .fillFormLoginAndClickButtonAuthorization(
                         UserCreator.getEmail(),
                         UserCreator.getPassword());
     }
@@ -54,7 +66,7 @@ public class AddCompanyPageTest extends AbstractTest {
                 .fillFormLoginAndClickButtonAuthorization(testUserEmail, testUserPassword);
     }*/
 
-    @Test
+    @Test(groups = "registrationUser")
     public void testAddCompanyPageFormNames(){
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
         addCompanyPage = authorizedUserHomePage.clickButtonCompanies()
@@ -78,7 +90,7 @@ public class AddCompanyPageTest extends AbstractTest {
         //надо ли проверять типы полей формы (text, button, select...)?
     }*/
 
-    @Test
+    @Test(groups = "authorizationUser")
     public void testAddCompanyWithInvalidData() throws InterruptedException {
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
         addCompanyPage = authorizedUserHomePage.clickButtonCompanies()
