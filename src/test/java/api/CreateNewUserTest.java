@@ -25,7 +25,7 @@ public class CreateNewUserTest {
     private final String userName = UserCreator.getUserName();
     private final String userEmail = UserCreator.getEmail();
     private final String userPassword = UserCreator.getPassword();
-    private final String exoectedMessageEmptyName = "поле фио является обязательным";
+    private final String expectedMessageEmptyName = "поле фио является обязательным";
 
 
     @Test
@@ -41,6 +41,6 @@ public class CreateNewUserTest {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(entity);
         String message = jsonObject.get("message").toString();
-        Assert.assertEquals(message, exoectedMessageEmptyName);
+        Assert.assertEquals(message, expectedMessageEmptyName);
     }
 }
