@@ -27,7 +27,7 @@ public class CreateNewUserTest {
     private final String userEmail = UserCreator.getEmail();
     private final String userPassword = UserCreator.getPassword();
     private final String inCorrectEmail = "123mail.ru";
-    private final String expectedMessageInCorrectEmail = " Некоректный  email "+inCorrectEmail;
+    private final String expectedMessageInCorrectEmail = " Некоректный  email " + inCorrectEmail;
 
     @Test
     public void testCreateNewUserWithInCorrectEmail() throws IOException, ParseException {
@@ -43,8 +43,5 @@ public class CreateNewUserTest {
         JSONObject jsonObject = (JSONObject) parser.parse(entity);
         String message = jsonObject.get("message").toString();
         Assert.assertEquals(message, expectedMessageInCorrectEmail);
-
-
     }
-
 }
