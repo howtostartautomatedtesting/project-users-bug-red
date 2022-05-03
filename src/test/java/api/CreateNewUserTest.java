@@ -7,6 +7,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.UserCreator;
@@ -22,10 +25,11 @@ public class CreateNewUserTest {
     private final String userName = UserCreator.getUserName();
     private final String userEmail = UserCreator.getEmail();
     private final String userPassword = UserCreator.getPassword();
+    private final String exoectedMessageEmptyName = "поле фио является обязательным";
 
 
     @Test
-    public void testCreateNewUserWithEmptyName() throws IOException {
+    public void testCreateNewUserWithEmptyName() throws IOException, ParseException {
         HttpPost request = new HttpPost("http://users.bugred.ru/tasks/rest/doregister");
         List<NameValuePair> authParams = new ArrayList<>();
         authParams.add(new BasicNameValuePair("name", ""));
@@ -34,8 +38,9 @@ public class CreateNewUserTest {
         request.setEntity(new UrlEncodedFormEntity(authParams));
         CloseableHttpResponse response = HttpClientBuilder.create().build().execute(request);
         String entity = EntityUtils.toString(response.getEntity());
-        Assert.assertTrue(entity.contains("\"message\":\"\\u043f\\u043e\\u043b\\u0435 \\u0444\\u0438\\u043e \\u044f" +
-                "\\u0432\\u043b\\u044f\\u0435\\u0442\\u0441\\u044f \\u043e\\u0431\\u044f\\u0437\\u0430\\u0442" +
-                "\\u0435\\u043b\\u044c\\u043d\\u044b\\u043c\""));
+        JSONParser parser = new JSONParser();
+        JSONObject jsonObject = (JSONObject) parser.parse(entity);
+        String message = jsonObject.get("message").toString();
+        Assert.assertEquals(message, exoectedMessageEmptyName);
     }
 }
