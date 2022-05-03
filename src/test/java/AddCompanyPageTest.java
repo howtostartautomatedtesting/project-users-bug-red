@@ -1,38 +1,75 @@
+import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.AddCompanyPage;
 import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
+import utils.UserCreator;
 
 import static org.testng.Assert.assertEquals;
 
 public class AddCompanyPageTest extends AbstractTest {
 
-    private AuthorizedUserHomePage authorizedUser;
+    AuthorizedUserHomePage authorizedUserHomePage;
+    AddCompanyPage addCompanyPage;
+    UserLoginPage userLoginPage;
 
-    @BeforeGroups("authorizedUser")
+    public static final String expectedHeaderTitle = "Добавление компании";
+    public static final String expectedFieldNameTitle = "Название";
+    public static final String expectedFieldTypeTitle = "ТИП";
+    public static final String expectedFieldINNTitle = "ИНН";
+    public static final String expectedFieldOGRNTitle = "ОГРН";
+    public static final String expectedFieldKPPTitle = "КПП";
+    public static final String expectedFieldPhoneTitle = "Телефон";
+    public static final String expectedFieldAddressTitle = "Адрес";
+    public static final String expectedFieldUsersTitle = "Сотрудники";
+    public static final String expectedButtonClearFieldUsersName = "Очистить поле";
+    public static final String expectedButtonAddCompanyName = "Добавить компанию";
+
+    @BeforeGroups("registrationUser")
+    public void pathToPageRegistrationUserHome() {
+        userLoginPage = new UserLoginPage(driver);
+
+        userLoginPage
+                .openPage()
+                .fillFormRegistrationAndClickButtonRegistration(
+                        UserCreator.getUserName(),
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword());
+    }
+
+    @BeforeGroups("authorizationUser")
+    public void pathToPageAuthorizationUserHome() {
+        userLoginPage = new UserLoginPage(driver);
+
+        userLoginPage
+                .openPage()
+                .fillFormLoginAndClickButtonAuthorization(
+                        UserCreator.getEmail(),
+                        UserCreator.getPassword());
+    }
+
+    @AfterMethod
+    public void closePage() throws InterruptedException {
+        authorizedUserHomePage = new AuthorizedUserHomePage(driver);
+        authorizedUserHomePage.logOutAuthorizedUserPage();
+        Thread.sleep(2000);
+    }
+
+   /* @BeforeGroups("authorizedUser")
     public void logInAccount() {
         String testUserEmail = "testUser@mail.ru";
         String testUserPassword = "test";
-        authorizedUser = new UserLoginPage(driver).openPage()
+        authorizedUserHomePage = new UserLoginPage(driver).openPage()
                 .fillFormLoginAndClickButtonAuthorization(testUserEmail, testUserPassword);
-    }
+    }*/
 
-    @Test(groups = "authorizedUser")
-    public void testAddCompanyPageFormNames() {
-        String expectedHeaderTitle = "Добавление компании";
-        String expectedFieldNameTitle = "Название";
-        String expectedFieldTypeTitle = "ТИП";
-        String expectedFieldINNTitle = "ИНН";
-        String expectedFieldOGRNTitle = "ОГРН";
-        String expectedFieldKPPTitle = "КПП";
-        String expectedFieldPhoneTitle = "Телефон";
-        String expectedFieldAddressTitle = "Адрес";
-        String expectedFieldUsersTitle = "Сотрудники";
-        String expectedButtonClearFieldUsersName = "Очистить поле";
-        String expectedButtonAddCompanyName = "Добавить компанию";
-
-        AddCompanyPage addCompanyPage = authorizedUser.clickButtonCompanies()
+    @Test(groups = "registrationUser")
+    public void testAddCompanyPageFormNames(){
+        authorizedUserHomePage = new AuthorizedUserHomePage(driver);
+        addCompanyPage = authorizedUserHomePage.clickButtonCompanies()
                 .clickButtonAddCompany();
 
         assertEquals(addCompanyPage.getHeaderTitle(), expectedHeaderTitle);
@@ -48,9 +85,44 @@ public class AddCompanyPageTest extends AbstractTest {
         assertEquals(addCompanyPage.getButtonAddCompanyName(), expectedButtonAddCompanyName);
     }
 
-    @Test(groups = "authorizedUser")
-    public void testAddCompanyPageFieldsTypes(){
+   /* @Test(groups = "authorizedUser")
+    public void testAddCompanyPageFieldsTypes() {
         //надо ли проверять типы полей формы (text, button, select...)?
-    }
+    }*/
 
+    @Test(groups = "authorizationUser")
+    public void testAddCompanyWithInvalidData() throws InterruptedException {
+        authorizedUserHomePage = new AuthorizedUserHomePage(driver);
+        addCompanyPage = authorizedUserHomePage.clickButtonCompanies()
+                .clickButtonAddCompany();
+
+        addCompanyPage.typeName("Компания 2")
+                .typeInn("12345")
+                .clickAddCompany();
+        String message = driver.findElement(By.name("inn")).getAttribute("message");
+        //String message = driver.findElement(By.className("bottom-right")).getAttribute("message"); не знаю как проверить, нет значения атрибута validationMessage
+        System.out.println(message);
+       // assertEquals(message, "Поле ИНН должно состоять из 12 цифр");
+
+        addCompanyPage
+                .typeInn("")
+                .typeOgrn("12345")
+                .clickAddCompany();
+
+        addCompanyPage
+                .typeInn("")
+                .typeOgrn("")
+                .typeKpp("12345")
+                .clickAddCompany();
+
+        addCompanyPage
+                .typeInn("")
+                .typeOgrn("")
+                .typeKpp("")
+                .typePhoneNumber("text")
+                .clickAddCompany();
+
+        Thread.sleep(3000);
+
+    }
 }

@@ -61,21 +61,25 @@ public class AddCompanyPage extends AbstractPage {
     }
 
     public AddCompanyPage typeInn(String inn) {
+        inputInn.clear();
         inputInn.sendKeys(inn);
         return this;
     }
 
     public AddCompanyPage typeOgrn(String ogrn) {
+        inputOgrn.clear();
         inputOgrn.sendKeys(ogrn);
         return this;
     }
 
     public AddCompanyPage typeKpp(String kpp) {
+        inputlKpp.clear();
         inputlKpp.sendKeys(kpp);
         return this;
     }
 
     public AddCompanyPage typePhoneNumber(String number) {
+        inputPhoneNumber.clear();
         inputPhoneNumber.sendKeys(number);
         return this;
     }
