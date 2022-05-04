@@ -12,6 +12,9 @@ public class AddTaskPage extends AbstractPage {
     public static final String LABEL_DESCRIPTION = "Описание задачи";
     public static final String LABEL_RESPONSIBLE = "Ответственный";
 
+    public static final String MESSAGE_EMPTY_INPUT_FIELD_ENG = "Please fill out this field.";
+    public static final String MESSAGE_EMPTY_INPUT_FIELD_RUS = "Заполните это поле.";
+
     private WebDriver driver;
 
     public AddTaskPage(WebDriver driver) {
@@ -90,5 +93,9 @@ public class AddTaskPage extends AbstractPage {
         fillFormTaskAdd(name, description, responsible);
         clickButtonAddTask();
         return new TasksPage(driver);
+    }
+
+    public String getMessageIfFieldDescriptionIsEmpty() {
+        return inputDescription.getAttribute("validationMessage");
     }
 }
