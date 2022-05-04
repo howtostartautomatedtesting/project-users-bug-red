@@ -2,8 +2,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.AuthorizedUserHomePage;
+import pageobjects.HomePage;
 import pageobjects.UserLoginPage;
+import uiTitles.AuthorizedUserHomePageUITitles;
 import utils.UserCreator;
+
+import static org.testng.Assert.assertEquals;
 
 public class AuthorizedUserHomePageTest extends AbstractTest{
     public static final String BUTTON_LABEL_USERS = "Пользователи";
@@ -15,6 +19,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
 
     UserLoginPage userLoginPage;
     AuthorizedUserHomePage authorizedUserHomePage;
+    HomePage homePage;
 
     @BeforeMethod
     public void pathToPageAuthorizedUserHome(){
@@ -38,5 +43,12 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
         Assert.assertEquals(authorizedUserHomePage.getButtonNotificationsName(), LINK_VALUE_NOTIFICATIONS);
         Assert.assertEquals(authorizedUserHomePage.getButtonUserTasksName(), LINK_VALUE_TASKS);
         Assert.assertEquals(authorizedUserHomePage.getDropdownMenuUserAccountName(), UserCreator.getUserName().toLowerCase());
+    }
+
+    @Test
+    public void testAuthorizedUserHomePageCheckLinkButtonLogOut() {
+        homePage = new AuthorizedUserHomePage(driver).logOutAuthorizedUserPage();
+
+        assertEquals(driver.getCurrentUrl(), AuthorizedUserHomePageUITitles.EXPECTED_OPEN_LOG_OUT_USER_PAGE);
     }
 }
