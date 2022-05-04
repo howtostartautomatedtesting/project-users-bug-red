@@ -28,6 +28,8 @@ public class GetUserInfo {
     private final String userEmail = UserCreator.getEmail();
     private final String userPassword = UserCreator.getPassword();
     private final String expectedMessageUserNotBody = "Параметр email является обязательным!";
+    JSONObject jsonObject;
+    JSONParser jsonParser;
 
     @Test
     public void testGetUserInfoWithEmptyBody() throws IOException, ParseException, org.json.simple.parser.ParseException {
@@ -42,12 +44,12 @@ public class GetUserInfo {
         CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute(httpGetRequest);
         String responseText = EntityUtils.toString(httpResponse.getEntity());
 
-        JSONParser parser = new JSONParser();
-        JSONObject jsonObject = (JSONObject) parser.parse(responseText);
-        String message = jsonObject.get("message").toString();
+        jsonParser = new JSONParser();
+        jsonObject = (JSONObject) jsonParser.parse(responseText);
+        String responseMessage = jsonObject.get("message").toString();
 
         assertEquals(httpResponse.getCode(), 200);
-        assertEquals(message, expectedMessageUserNotBody);
+        assertEquals(responseMessage, expectedMessageUserNotBody);
 
         HttpClientBuilder.create().build().close();
     }
