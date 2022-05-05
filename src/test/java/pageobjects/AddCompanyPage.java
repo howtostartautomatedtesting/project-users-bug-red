@@ -8,6 +8,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddCompanyPage extends AbstractPage {
+    public static final String expectedHeaderTitle = "Добавление компании";
+    public static final String expectedFieldNameTitle = "Название";
+    public static final String expectedFieldTypeTitle = "ТИП";
+    public static final String expectedFieldINNTitle = "ИНН";
+    public static final String expectedFieldOGRNTitle = "ОГРН";
+    public static final String expectedFieldKPPTitle = "КПП";
+    public static final String expectedFieldPhoneTitle = "Телефон";
+    public static final String expectedFieldAddressTitle = "Адрес";
+    public static final String expectedFieldUsersTitle = "Сотрудники";
+    public static final String expectedButtonClearFieldUsersName = "Очистить поле";
+    public static final String expectedButtonAddCompanyName = "Добавить компанию";
     private WebDriver driver;
     public static final String ADD_PAGE_COMPANY_URL = BASE_URL + "/companys/add.html";
 
