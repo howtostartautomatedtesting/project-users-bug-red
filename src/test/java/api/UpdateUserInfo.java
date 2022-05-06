@@ -11,9 +11,12 @@ import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pageobjects.HomePage;
 import utils.UserCreator;
 
 import java.io.IOException;
@@ -30,27 +33,19 @@ import static org.testng.Assert.assertNotEquals;
  */
 public class UpdateUserInfo {
 
-    private static final String CREATE_NEW_USER_URL = "http://users.bugred.ru/tasks/rest/doregister";
     private static final String UPDATE_USER_INFO_URL = "http://users.bugred.ru/tasks/rest/fullupdateuser";
 
     private String userName = UserCreator.getUserName();
     private String userEmail = UserCreator.getEmail();
     private String userPassword = UserCreator.getPassword();
 
-    CloseableHttpClient httpClient;
-
     @BeforeGroups("newUser")
-    public void createNewUser() throws IOException, ParseException {
-        httpClient = HttpClientBuilder.create().build();
-
-        RequestBuilder requestBuilderPost = RequestBuilder.post();
-        RequestBuilder builder1 = requestBuilderPost.setUri(CREATE_NEW_USER_URL);
-        RequestBuilder builder2 = builder1.addParameter("name", userName)
-                .addParameter("email", userEmail)
-                .addParameter("password", userPassword);
-
-        HttpUriRequest httpPost = builder2.build();
-        httpClient.execute(httpPost);
+    public void createNewUser(){
+        WebDriver driver = new ChromeDriver();
+        new HomePage(driver).openPage()
+                .clickButtonLogin()
+                .fillFormRegistrationAndClickButtonRegistration(userName, userEmail, userPassword);
+        driver.quit();
     }
 
     @DataProvider(name = "validGender")
@@ -65,7 +60,7 @@ public class UpdateUserInfo {
         String hobby = UserCreator.getHobby();
         String inn = UserCreator.getINN();
 
-        System.out.println(userEmail);
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpPatch httpPatch = new HttpPatch(UPDATE_USER_INFO_URL);
         List<NameValuePair> params = getQueryParameters(userEmail, userName, gender, birthday, startDate, hobby, inn);
@@ -76,8 +71,6 @@ public class UpdateUserInfo {
         HttpEntity entity = responsePatch.getEntity();
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(EntityUtils.toString(entity));
-
-        System.out.println(jsonObject);
 
         assertEquals(jsonObject.get("birthday").toString(), birthday);
         assertEquals(jsonObject.get("date_start").toString(), startDate);

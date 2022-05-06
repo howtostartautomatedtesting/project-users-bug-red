@@ -13,8 +13,6 @@ public class UserCreator {
     private static String email = randomString + "@gmail.com";
     private static String password = randomString;
 
-    private static String inn = RandomStringUtils.randomNumeric(12);
-
     public static String getUserName() {
         return userName;
     }
@@ -28,11 +26,11 @@ public class UserCreator {
     }
 
     public static String getHobby() {
-        return randomString;
+        return RandomStringUtils.randomAlphabetic(10);
     }
 
     public static String getINN() {
-        return inn;
+        return RandomStringUtils.randomNumeric(12);
     }
 
     public static String getRandomDate() {
