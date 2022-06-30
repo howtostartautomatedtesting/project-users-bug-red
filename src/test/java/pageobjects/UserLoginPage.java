@@ -128,7 +128,8 @@ public class UserLoginPage extends AbstractPage {
         return buttonRegistration.getAttribute("value");
     }
 
-    public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password) {
+
+    public AuthorizedUserHomePage fillFormLoginAndClickButtonAuthorization(String email, String password){
         inputEmailLogin(email);
         inputPasswordLogin(password);
         clickButtonAuthorization();

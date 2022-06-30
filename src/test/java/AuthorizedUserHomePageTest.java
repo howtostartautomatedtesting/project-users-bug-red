@@ -5,7 +5,7 @@ import pageobjects.AuthorizedUserHomePage;
 import pageobjects.UserLoginPage;
 import utils.UserCreator;
 
-public class AuthorizedUserHomePageTest extends AbstractTest{
+public class AuthorizedUserHomePageTest extends AbstractTest {
     public static final String BUTTON_LABEL_USERS = "Пользователи";
     public static final String BUTTON_LABEL_TASKS = "Задачи";
     public static final String BUTTON_LABEL_COMPANIES = "Компании";
@@ -17,9 +17,8 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     AuthorizedUserHomePage authorizedUserHomePage;
 
     @BeforeMethod
-    public void pathToPageAuthorizedUserHome(){
+    public void pathToPageAuthorizedUserHome() {
         userLoginPage = new UserLoginPage(driver);
-
         userLoginPage
                 .openPage()
                 .fillFormRegistrationAndClickButtonRegistration(
@@ -29,7 +28,7 @@ public class AuthorizedUserHomePageTest extends AbstractTest{
     }
 
     @Test
-    public void testAuthorizedUserHomePageUI(){
+    public void testAuthorizedUserHomePageUI() {
         authorizedUserHomePage = new AuthorizedUserHomePage(driver);
 
         Assert.assertEquals(authorizedUserHomePage.getButtonUsers(), BUTTON_LABEL_USERS);

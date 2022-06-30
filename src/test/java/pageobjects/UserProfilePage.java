@@ -56,6 +56,9 @@ public class UserProfilePage extends AbstractPage {
     @FindBy(xpath = "//a[@class='btn btn-danger']")
     private WebElement buttonFullProfile;
 
+    @FindBy(xpath = "//ul[@class='nav navbar-nav pull-right']//a[@class='dropdown-toggle']")
+    private WebElement dropdownMenuUserAccount;
+
     public UserProfilePage openUsersPage() {
         driver.get(USER_PROFILE_PAGE_URL);
         return this;
@@ -168,5 +171,10 @@ public class UserProfilePage extends AbstractPage {
     public UserProfilePage clickButtonFullProfile(){
         buttonFullProfile.click();
         return new UserProfilePage(driver);
+    }
+
+    public String getUserName() {
+        System.out.println(dropdownMenuUserAccount.getText());
+        return dropdownMenuUserAccount.getText();
     }
 }
