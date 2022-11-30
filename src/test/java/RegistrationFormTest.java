@@ -17,7 +17,7 @@ public class RegistrationFormTest extends AbstractTest {
         // TODO add asserts! here
 
         // TODO remove sleep!
-        //Thread.sleep(3000);
+        //Thread.sleep(3000 );
     }
 
     @Test
