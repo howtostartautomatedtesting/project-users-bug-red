@@ -16,7 +16,7 @@ public class SampleTest {
     @Test
     public void testGetUrl() throws IOException {
         HttpUriRequest request = new HttpGet( "http://users.bugred.ru/");
-        HttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
+        HttpResponse httpResponse = HttpClientBuilder.create().build().execute( request    );
         Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), 200);
     }
 }
